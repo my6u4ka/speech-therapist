@@ -111,6 +111,21 @@
       : "Почти! Остават още " + n + " думи.";
   }
 
+  // Picks up to count distinct sets, in random order (all of them if there are fewer).
+  function pickSeries(sets, count, rng) {
+    if (count === undefined) count = 5;
+    return shuffle(sets, rng).slice(0, count);
+  }
+
+  // 1-3 stars by share found; never 0 (positive feedback only).
+  function starsFor(found, total) {
+    if (!(total > 0)) return 1;
+    var share = found / total;
+    if (share >= 0.8) return 3;
+    if (share >= 0.5) return 2;
+    return 1;
+  }
+
   var api = {
     normalize: normalize,
     validateSet: validateSet,
@@ -118,7 +133,9 @@
     shuffle: shuffle,
     checkRound: checkRound,
     instructionText: instructionText,
-    missingText: missingText
+    missingText: missingText,
+    pickSeries: pickSeries,
+    starsFor: starsFor
   };
 
   globalThis.SynonymLogic = api;

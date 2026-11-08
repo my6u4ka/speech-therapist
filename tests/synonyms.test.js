@@ -123,3 +123,43 @@ test("missingText uses the right Bulgarian form", () => {
   assert.equal(L.missingText(1), "Почти! Остава още 1 дума.");
   assert.equal(L.missingText(2), "Почти! Остават още 2 думи.");
 });
+
+// --- pickSeries, starsFor (T011) ---
+
+function seededRng(seed) {
+  let x = seed;
+  return () => {
+    x = (x * 1664525 + 1013904223) % 4294967296;
+    return x / 4294967296;
+  };
+}
+
+test("pickSeries returns 5 distinct sets from a large bank", () => {
+  const out = L.pickSeries(BANK, 5, seededRng(1));
+  assert.equal(out.length, 5);
+  assert.equal(new Set(out.map((s) => s.word)).size, 5);
+});
+
+test("pickSeries returns all sets without repeats when there are fewer than 5", () => {
+  const few = BANK.slice(0, 3);
+  const out = L.pickSeries(few, 5, seededRng(2));
+  assert.equal(out.length, 3);
+  assert.equal(new Set(out.map((s) => s.word)).size, 3);
+});
+
+test("pickSeries gives a different order with a different rng", () => {
+  const a = L.pickSeries(BANK, 5, seededRng(1)).map((s) => s.word).join();
+  const b = L.pickSeries(BANK, 5, seededRng(99)).map((s) => s.word).join();
+  assert.notEqual(a, b);
+});
+
+test("starsFor returns 1-3 and never 0", () => {
+  for (let total = 1; total <= 20; total++) {
+    for (let found = 0; found <= total; found++) {
+      const n = L.starsFor(found, total);
+      assert.ok(n >= 1 && n <= 3, found + "/" + total);
+    }
+  }
+  assert.equal(L.starsFor(0, 0), 1);
+  assert.equal(L.starsFor(10, 10), 3);
+});

@@ -12,12 +12,19 @@
     wrongOnly: "Почти! Някои думи не са с близко значение. Опитай пак!",
     perfect: "Браво! Намери всички!",
     revealed: "Ето всички думи с близко значение.",
-    missedTag: "и тази"
+    missedTag: "и тази",
+    again: "Играй пак"
   };
+  var SERIES_LENGTH = 5;
   var WRONG_DELAY_MS = 1000;
 
   var els = {
     round: document.getElementById("round"),
+    progress: document.getElementById("progress"),
+    summary: document.getElementById("summary"),
+    summaryText: document.getElementById("summary-text"),
+    summaryStars: document.getElementById("summary-stars"),
+    again: document.getElementById("again"),
     reference: document.getElementById("reference"),
     instruction: document.getElementById("instruction"),
     candidates: document.getElementById("candidates"),
@@ -33,10 +40,8 @@
   });
 
   var round = null;
-
-  function randomSet() {
-    return validSets[Math.floor(Math.random() * validSets.length)];
-  }
+  // Series state lives in memory only (FR-015).
+  var series = null;
 
   function setLabel(btn, word, tag) {
     btn.textContent = word;
@@ -165,15 +170,45 @@
     }, WRONG_DELAY_MS);
   }
 
-  function next() {
-    // US1: another random round. US2 replaces this with a series.
-    startRound(randomSet());
+  function showProgress() {
+    els.progress.textContent = (series.index + 1) + " / " + series.rounds.length;
   }
+
+  function startSeries() {
+    series = { rounds: L.pickSeries(validSets, SERIES_LENGTH), index: 0, found: 0, total: 0 };
+    els.summary.hidden = true;
+    els.round.hidden = false;
+    showProgress();
+    startRound(series.rounds[0]);
+  }
+
+  function showSummary() {
+    els.round.hidden = true;
+    els.summary.hidden = false;
+    els.summaryText.textContent = "Браво! Намери " + series.found + " от " + series.total + " думи.";
+    els.summaryStars.textContent = "⭐".repeat(L.starsFor(series.found, series.total));
+    els.again.textContent = TEXT.again;
+    els.again.focus();
+  }
+
+  function next() {
+    series.found += round.found;
+    series.total += round.set.synonyms.length;
+    series.index++;
+    if (series.index >= series.rounds.length) {
+      showSummary();
+      return;
+    }
+    showProgress();
+    startRound(series.rounds[series.index]);
+  }
+
+  els.again.addEventListener("click", startSeries);
 
   els.action.addEventListener("click", function () {
     if (round.state === "done") next();
     else check();
   });
 
-  if (validSets.length > 0) startRound(randomSet());
+  if (validSets.length > 0) startSeries();
 })();

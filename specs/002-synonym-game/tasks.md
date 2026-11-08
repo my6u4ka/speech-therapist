@@ -154,22 +154,22 @@ manually per quickstart.md.
 
 **Independent Test**: quickstart scenarios 8–11.
 
-- [ ] T011 [US2] Add tests to `tests/synonyms.test.js` for `pickSeries(sets, 5, rng)`:
+- [x] T011 [US2] Add tests to `tests/synonyms.test.js` for `pickSeries(sets, 5, rng)`:
   - returns 5 distinct sets when the bank is large enough;
   - returns all sets, without repeats, when there are fewer than 5;
   - returns a different order with a different `rng`.
 
   Add tests for `starsFor(found, total)`: it returns 1–3 and never 0 (R9).
-- [ ] T012 [US2] Implement `pickSeries(sets, count = 5, rng)` and `starsFor(found, total)` in
+- [x] T012 [US2] Implement `pickSeries(sets, count = 5, rng)` and `starsFor(found, total)` in
   `games/synonyms/logic.js`, so that the T011 tests pass.
-- [ ] T013 [US2] In `games/synonyms/game.js`, replace the single-round loop with a series:
+- [x] T013 [US2] In `games/synonyms/game.js`, replace the single-round loop with a series:
   - on load, call `pickSeries(validSets, 5)`;
   - show progress such as "1 / 5" near the top (not in the top-left 80 px);
   - "Напред" moves to the next round, and after the last round it shows `#summary`;
   - the summary shows "Браво! Намери {found} от {total} думи." with `starsFor` stars and an
     "Играй пак" button that starts a new `pickSeries`;
   - nothing is stored (FR-015).
-- [ ] T014 [P] [US2] Add summary and progress styles to `games/synonyms/game.css`: large centered
+- [x] T014 [P] [US2] Add summary and progress styles to `games/synonyms/game.css`: large centered
   summary text, big stars, a full-width "Играй пак" button, and a small progress indicator.
 
 **Checkpoint**: a full series plays through and can be restarted.
