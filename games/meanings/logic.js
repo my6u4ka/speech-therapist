@@ -134,6 +134,34 @@
     return shuffle(items, rng);
   }
 
+  // Picks up to `count` entries from a shuffled bank, taking an entry only if its word is not
+  // used yet (research R4). Shorter than `count` if the bank has fewer distinct words.
+  function pickSeries(entries, count, rng) {
+    var used = {};
+    var series = [];
+    var pool = shuffle(entries, rng);
+    for (var i = 0; i < pool.length && series.length < count; i++) {
+      var key = normalize(pool[i].word);
+      if (Object.prototype.hasOwnProperty.call(used, key)) continue;
+      used[key] = true;
+      series.push(pool[i]);
+    }
+    return series;
+  }
+
+  // 1-3 stars by share found; never 0 (positive feedback only).
+  function starsFor(found, total) {
+    if (!(total > 0)) return 1;
+    var share = found / total;
+    if (share >= 0.8) return 3;
+    if (share >= 0.5) return 2;
+    return 1;
+  }
+
+  function summaryLine2(firstTry, total) {
+    return "От първия опит: " + firstTry + " от " + total + ".";
+  }
+
   var api = {
     normalize: normalize,
     parseSentence: parseSentence,
@@ -141,7 +169,10 @@
     validateEntry: validateEntry,
     validateBank: validateBank,
     shuffle: shuffle,
-    buildOptions: buildOptions
+    buildOptions: buildOptions,
+    pickSeries: pickSeries,
+    starsFor: starsFor,
+    summaryLine2: summaryLine2
   };
 
   globalThis.MeaningLogic = api;

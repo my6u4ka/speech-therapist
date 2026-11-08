@@ -113,3 +113,47 @@ test("buildOptions returns 3 options, exactly one right, each explanation once",
   const seeded = L.buildOptions(e, () => 0.3);
   assert.equal(seeded.length, 3);
 });
+
+// Small deterministic generator for tests (mulberry32).
+function seeded(seed) {
+  let a = seed;
+  return () => {
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+test("pickSeries returns 8 entries with no repeated word", () => {
+  for (let seed = 1; seed <= 20; seed++) {
+    const series = L.pickSeries(BANK, 8, seeded(seed));
+    assert.equal(series.length, 8);
+    const words = series.map((e) => L.normalize(e.word));
+    assert.equal(new Set(words).size, 8);
+  }
+});
+
+test("pickSeries shortens to the number of distinct words", () => {
+  const bank = [];
+  for (const w of ["а", "б", "в"]) {
+    for (let i = 0; i < 2; i++) {
+      bank.push({ word: w, sentence: "[" + w + "].", right: "r" + i, wrong: ["x", "y"] });
+    }
+  }
+  const series = L.pickSeries(bank, 8, seeded(7));
+  assert.equal(series.length, 3);
+});
+
+test("starsFor returns 1-3 and never 0", () => {
+  assert.equal(L.starsFor(8, 8), 3);
+  assert.equal(L.starsFor(7, 8), 3);
+  assert.equal(L.starsFor(4, 8), 2);
+  assert.equal(L.starsFor(3, 8), 1);
+  assert.equal(L.starsFor(0, 8), 1);
+  assert.equal(L.starsFor(0, 0), 1);
+});
+
+test("summaryLine2 formats the first-try count", () => {
+  assert.equal(L.summaryLine2(7, 8), "От първия опит: 7 от 8.");
+});

@@ -145,17 +145,17 @@ description: "Task list for the Word Meanings Game feature"
 
 **Independent Test**: quickstart scenarios 8–12.
 
-- [ ] T011 [US2] Add tests to `tests/meanings.test.js`:
+- [x] T011 [US2] Add tests to `tests/meanings.test.js`:
   - `pickSeries(entries, 8, rng)`, with a fixed seed: it returns 8 entries, no word repeats, and
     it shortens to the number of distinct words when the bank is smaller;
   - `starsFor(found, total)` returns 1–3 and never 0;
   - `summaryLine2(x, y)` returns `"От първия опит: x от y."`.
-- [ ] T012 [US2] Implement `pickSeries`, `starsFor` and `summaryLine2` in `games/meanings/logic.js`,
+- [x] T012 [US2] Implement `pickSeries`, `starsFor` and `summaryLine2` in `games/meanings/logic.js`,
   so that the T011 tests pass.
   - `pickSeries` follows research R4.
   - `starsFor` gives 3 stars at 80% or more, 2 at 50% or more, otherwise 1, and 1 if `total` is
     0.
-- [ ] T013 [US2] In `games/meanings/game.js`, replace the random question with a series:
+- [x] T013 [US2] In `games/meanings/game.js`, replace the random question with a series:
   - start it with `pickSeries(validEntries, 8)`;
   - show progress as "n / 8";
   - on a right answer to the last question, play `sfx("round")` instead of `sfx("correct")`;
@@ -164,7 +164,7 @@ description: "Task list for the Word Meanings Game feature"
     and the `starsFor` stars;
   - "Играй пак" starts a new series;
   - store nothing (FR-013).
-- [ ] T014 [P] [US2] Make sure the summary styles in `games/meanings/game.css` match the other
+- [x] T014 [P] [US2] Make sure the summary styles in `games/meanings/game.css` match the other
   games.
 
 ---
