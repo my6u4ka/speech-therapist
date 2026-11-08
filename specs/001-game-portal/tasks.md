@@ -60,7 +60,7 @@ the game opens in the same window (quickstart scenarios 1–4, 7, 8, 10–13).
 
 ### Implementation for User Story 1
 
-- [ ] T004 [P] [US1] Create `games.js` that defines `window.GAMES = [];` with a header comment
+- [x] T004 [P] [US1] Create `games.js` that defines `window.GAMES = [];` with a header comment
   (in English) copying the field rules from data-model.md verbatim:
   - `id`: lowercase Latin letters, digits, and hyphens (`^[a-z0-9-]+$`); unique; equals the
     folder name under `games/`; never starts with `_`.
@@ -70,7 +70,7 @@ the game opens in the same window (quickstart scenarios 1–4, 7, 8, 10–13).
   - `href`: optional; defaults to `games/<id>/`; must point inside this site, with no `http://`,
     `https://`, or `//`.
   - The order in the file is the order of tiles.
-- [ ] T005 [P] [US1] Create `assets/portal/portal.css`:
+- [x] T005 [P] [US1] Create `assets/portal/portal.css`:
   - colors as CSS custom properties on `:root`, with high contrast, and `body` given an explicit
     background;
   - the font stack `system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif` (R6);
@@ -80,7 +80,7 @@ the game opens in the same window (quickstart scenarios 1–4, 7, 8, 10–13).
   - large rounded tiles with a visible `:focus-visible` outline and a pressed state;
   - `overflow-x: hidden` safety, so there is no sideways scrolling at 360 px (SC-004);
   - a `.tile--no-image` style that shows the name alone, larger, when the picture fails (R4).
-- [ ] T006 [US1] Create `index.html` (the portal, FR-001):
+- [x] T006 [US1] Create `index.html` (the portal, FR-001):
   - `<html lang="bg">`, charset and viewport metas, and the title and page heading `Игри с думи`
     (the owner approves the wording);
   - load `assets/portal/portal.css`, then `games.js` and `assets/portal/portal.js` as plain
@@ -88,7 +88,7 @@ the game opens in the same window (quickstart scenarios 1–4, 7, 8, 10–13).
   - an empty tile container (`<main id="games">`);
   - a `<noscript>` message in Bulgarian asking to turn on JavaScript;
   - no other content, links, or choices before the tiles (FR-002, FR-005).
-- [ ] T007 [US1] Create `assets/portal/portal.js`, which reads `window.GAMES` and renders one tile
+- [x] T007 [US1] Create `assets/portal/portal.js`, which reads `window.GAMES` and renders one tile
   per valid entry, in file order:
   - each tile is an `<a class="tile" href="...">` (R2) containing
     `<img src="..." alt="" width="512" height="512" loading="lazy">` and
@@ -101,10 +101,10 @@ the game opens in the same window (quickstart scenarios 1–4, 7, 8, 10–13).
   - on an image `error` event, remove the image and add `tile--no-image` to the tile (R4);
   - if `window.GAMES` is missing or not an array, render nothing and warn;
   - store nothing and make no network requests of its own (FR-008).
-- [ ] T008 [US1] Add the temporary test entry from quickstart.md to `games.js`:
+- [x] T008 [US1] Add the temporary test entry from quickstart.md to `games.js`:
   `{ id: "test-game", name: "Проба", image: "games/_template/cover.svg", href: "games/_template/" }`
   (removed in T015)
-- [ ] T009 [P] [US1] Create `404.html`: `lang="bg"`, a friendly Bulgarian message that this game
+- [x] T009 [P] [US1] Create `404.html`: `lang="bg"`, a friendly Bulgarian message that this game
   could not be found (e.g. `Опа! Тази игра не е тук.`), and a link back to the portal at the
   absolute path `/speech-therapist/`. Styles are inline in the page, because Pages serves it at
   any depth (contract home-control.md); no technical error text.
