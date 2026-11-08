@@ -67,11 +67,58 @@
     return a;
   }
 
+  // Checks the marked words. statuses maps each candidate word to
+  // "correct" | "wrong" | "missed" | "neutral". "missed" only appears on the final check
+  // (attempt 2). done is true on attempt 2, or when nothing is wrong and nothing is missing.
+  function checkRound(set, marked, attempt) {
+    var isMarked = {};
+    marked.forEach(function (w) { isMarked[w] = true; });
+    var statuses = {};
+    var missingCount = 0;
+    var found = 0;
+    var hasWrong = false;
+    set.synonyms.forEach(function (w) {
+      if (isMarked[w]) {
+        statuses[w] = "correct";
+        found++;
+      } else {
+        missingCount++;
+        statuses[w] = attempt === 2 ? "missed" : "neutral";
+      }
+    });
+    set.distractors.forEach(function (w) {
+      if (isMarked[w]) {
+        statuses[w] = "wrong";
+        hasWrong = true;
+      } else {
+        statuses[w] = "neutral";
+      }
+    });
+    var done = attempt === 2 || (!hasWrong && missingCount === 0);
+    return { statuses: statuses, missingCount: missingCount, done: done, found: found };
+  }
+
+  // Bulgarian agreement: 1 дума / N думи.
+  function instructionText(n) {
+    return n === 1
+      ? "Намери 1 дума с близко значение"
+      : "Намери " + n + " думи с близко значение";
+  }
+
+  function missingText(n) {
+    return n === 1
+      ? "Почти! Остава още 1 дума."
+      : "Почти! Остават още " + n + " думи.";
+  }
+
   var api = {
     normalize: normalize,
     validateSet: validateSet,
     validateBank: validateBank,
-    shuffle: shuffle
+    shuffle: shuffle,
+    checkRound: checkRound,
+    instructionText: instructionText,
+    missingText: missingText
   };
 
   globalThis.SynonymLogic = api;

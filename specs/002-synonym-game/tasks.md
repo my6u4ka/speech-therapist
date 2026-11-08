@@ -99,7 +99,7 @@ manually per quickstart.md.
 
 ### Tests for User Story 1
 
-- [ ] T006 [US1] Add tests to `tests/synonyms.test.js` for `checkRound`, following
+- [x] T006 [US1] Add tests to `tests/synonyms.test.js` for `checkRound`, following
   contracts/round-flow.md:
   - attempt 1 with a wrong mark and a missing synonym: `correct` and `wrong` statuses, no
     `missed`, `missingCount` greater than 0, and `done` false;
@@ -114,10 +114,10 @@ manually per quickstart.md.
 
 ### Implementation for User Story 1
 
-- [ ] T007 [US1] Implement `checkRound(set, marked, attempt)`, `instructionText(n)`, and
+- [x] T007 [US1] Implement `checkRound(set, marked, attempt)`, `instructionText(n)`, and
   `missingText(n)` in `games/synonyms/logic.js` exactly per contracts/round-flow.md, so that the
   T006 tests pass.
-- [ ] T008 [US1] Create `games/synonyms/game.js`, part 1: the round screen.
+- [x] T008 [US1] Create `games/synonyms/game.js`, part 1: the round screen.
   - Take the valid sets from `SYNONYM_SETS` (skip invalid ones with `console.warn`).
   - Start a round with a random set.
   - Render the reference word, `instructionText(synonyms.length)`, and the shuffled candidates as
@@ -126,7 +126,7 @@ manually per quickstart.md.
   - "Провери" is disabled until at least one word is newly marked (FR-004). Locked words can't be
     toggled.
   - Set all text with `textContent` only.
-- [ ] T009 [US1] In `games/synonyms/game.js`, implement the check flow per contracts/round-flow.md
+- [x] T009 [US1] In `games/synonyms/game.js`, implement the check flow per contracts/round-flow.md
   "States".
   - **First check with mistakes:** mark correct words `correct` and lock them, and mark wrong
     words `wrong` with "Опитай пак!" shown once. After about 1 s, clear the wrong marks. Write
@@ -135,7 +135,7 @@ manually per quickstart.md.
   - **Second check:** show `correct`, `wrong`, and `missed` (★ and the label "и тази"), the text
     "Ето всички думи с близко значение.", and "Напред".
   - In this story, "Напред" starts another random round. US2 replaces this with a series.
-- [ ] T010 [P] [US1] Add state styles to `games/synonyms/game.css` (R6):
+- [x] T010 [P] [US1] Add state styles to `games/synonyms/game.css` (R6):
   - `.marked`: ✓ and a thick border, distinguishable in grayscale;
   - `.correct`: green with ✓, locked look;
   - `.wrong`: muted, with a short shake;
