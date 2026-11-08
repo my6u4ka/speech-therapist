@@ -59,7 +59,8 @@ browser's back button, so it is less critical than Story 1.
 ### Edge Cases
 
 - **A game fails to open**: the child sees a friendly message and a way back to the portal, never a
-  technical error.
+  technical error. Besides the usual home control, this page has a large "Към игрите" button
+  under the message, because a child who lands there needs the clearest possible way back.
 - **Double tap or rapid taps on a tile**: exactly one game opens.
 - **A game's picture fails to load**: the tile still shows the game's name and still opens the
   game.

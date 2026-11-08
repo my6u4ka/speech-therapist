@@ -5,8 +5,8 @@
 // - id: lowercase Latin letters, digits, and hyphens (^[a-z0-9-]+$); unique; equals the
 //   folder name under games/; never starts with "_".
 // - name: Bulgarian, at most 24 characters.
-// - image: a relative path inside the game's folder; square; at least 512x512 px; at most
-//   100 KB; WebP, SVG, or PNG.
+// - image: a relative path inside this site (by convention in the game's folder); square;
+//   at least 512x512 px; at most 100 KB; WebP, SVG, or PNG.
 // - href: optional; defaults to games/<id>/; must point inside this site, with no http://,
 //   https://, or //.
 // - The order in the file is the order of tiles.

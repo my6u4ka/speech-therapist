@@ -232,5 +232,5 @@ Task: "Create 404.html with friendly Bulgarian message and absolute link to /spe
 
 ## Phase 6: Convergence
 
-- [ ] T017 Decide whether to keep the extra "Към игрите" button in `404.html` (it duplicates the home control). If kept, mention it in spec.md Edge Cases ("a way back to the portal"); if not, remove it from `404.html`. Per spec: Edge Cases, "A game fails to open" (unrequested)
-- [ ] T018 Make `assets/portal/portal.js` reject an `image` that is not inside `games/<id>/`, i.e. not starting with `games/` followed by the entry's `id`. Update the quickstart test entry to a real game folder, or relax the rule in data-model.md to "inside this site". Per data-model: Game entry `image` "inside the game's folder" (partial)
+- [x] T017 Decide whether to keep the extra "Към игрите" button in `404.html` (it duplicates the home control). If kept, mention it in spec.md Edge Cases ("a way back to the portal"); if not, remove it from `404.html`. Per spec: Edge Cases, "A game fails to open" (unrequested)
+- [x] T018 Make `assets/portal/portal.js` reject an `image` that is not inside `games/<id>/`, i.e. not starting with `games/` followed by the entry's `id`. Update the quickstart test entry to a real game folder, or relax the rule in data-model.md to "inside this site". Per data-model: Game entry `image` "inside the game's folder" (partial)
