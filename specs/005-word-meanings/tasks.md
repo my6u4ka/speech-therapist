@@ -171,10 +171,10 @@ description: "Task list for the Word Meanings Game feature"
 
 ## Phase 5: User Story 3 - The game is on the portal (Priority: P3)
 
-- [ ] T015 [P] [US3] Create `games/meanings/cover.svg`: square (viewBox 0 0 512 512), "at most 100
+- [x] T015 [P] [US3] Create `games/meanings/cover.svg`: square (viewBox 0 0 512 512), "at most 100
   KB", friendly, with no text. It should suggest "what does it mean?", for example an open book
   with a big question mark, or a magnifying glass over a word card with no letters.
-- [ ] T016 [US3] Add `{ id: "meanings", name: "Какво означава?", image: "games/meanings/cover.svg" }`
+- [x] T016 [US3] Add `{ id: "meanings", name: "Какво означава?", image: "games/meanings/cover.svg" }`
   to `window.GAMES` in `games.js`, after "antonyms".
 
 ---

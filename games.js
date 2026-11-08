@@ -12,5 +12,6 @@
 // - The order in the file is the order of tiles.
 window.GAMES = [
   { id: "synonyms", name: "Синоними", image: "games/synonyms/cover.svg" },
-  { id: "antonyms", name: "Антоними", image: "games/antonyms/cover.svg" }
+  { id: "antonyms", name: "Антоними", image: "games/antonyms/cover.svg" },
+  { id: "meanings", name: "Какво означава?", image: "games/meanings/cover.svg" }
 ];
