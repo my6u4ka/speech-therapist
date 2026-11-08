@@ -148,7 +148,7 @@ nothing stored.
 
 **Independent Test**: quickstart scenarios 1, 8–10.
 
-- [ ] T011 [US2] In `games/synonyms/index.html`:
+- [x] T011 [US2] In `games/synonyms/index.html`:
   - add `<link rel="stylesheet" href="../../assets/sound/sound.css">`;
   - right after the home control, add the button from contracts/sound-control.md
     (`class="sound-control"`, `aria-pressed="true"`, `aria-label="Звук"`, with an image of
@@ -156,7 +156,7 @@ nothing stored.
 
   In `games/synonyms/game.css`, change `.progress` from absolute top-right into the normal flow:
   `position: static`, centered, above the reference word. Keep its font size and weight.
-- [ ] T012 [P] [US2] Make the same changes in `games/antonyms/index.html` and
+- [x] T012 [P] [US2] Make the same changes in `games/antonyms/index.html` and
   `games/antonyms/game.css`.
 
 **Checkpoint**: the control toggles sound in both games, and nothing overlaps.
