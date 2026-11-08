@@ -10,4 +10,6 @@
 // - href: optional; defaults to games/<id>/; must point inside this site, with no http://,
 //   https://, or //.
 // - The order in the file is the order of tiles.
-window.GAMES = [];
+window.GAMES = [
+  { id: "synonyms", name: "Синоними", image: "games/synonyms/cover.svg" }
+];
