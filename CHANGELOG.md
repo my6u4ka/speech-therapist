@@ -3,6 +3,13 @@
 All notable changes to this project are listed here. Versions follow `vX.Y.Z` tags on `main`
 (see the git flow rules in `.specify/memory/constitution.md`).
 
+## [Unreleased]
+
+### Changed
+
+- Constitution v1.2.0: small fixes (icons, wording, CSS, bugs that make code match a spec,
+  docs) may skip the Spec Kit flow, on `fix/` or `hotfix/` branches, and are recorded here.
+
 ## [1.0.1] - 2026-11-08
 
 ### Fixed

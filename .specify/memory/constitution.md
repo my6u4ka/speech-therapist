@@ -79,7 +79,23 @@ able to hold the whole system in their head.
 
 - Every new game or change goes through Spec Kit: `/speckit-specify` → (`/speckit-clarify`) →
   `/speckit-plan` → `/speckit-tasks` → (`/speckit-analyze`) → `/speckit-implement` →
-  `/speckit-converge`.
+  `/speckit-converge`. The only exceptions are **small fixes**, described below.
+- A **small fix** MAY skip the Spec Kit flow. A small fix is a change that adds no new behavior
+  for the child and changes no requirement in any spec, for example:
+  - a site icon or a missing asset;
+  - a spelling or wording correction in UI text or in a word bank;
+  - a CSS or layout correction;
+  - a bug fix that makes the code match an existing spec;
+  - documentation updates;
+  - amendments to this constitution, made via `/speckit-constitution`.
+
+  A small fix MUST:
+  - be recorded in `CHANGELOG.md` when it reaches `main`;
+  - keep all automated tests passing;
+  - be checked in a browser where it is visible;
+  - keep the affected spec, plan, or contract in line with the change, in the same branch.
+
+  If a fix changes what a spec requires, it is not a small fix: it goes through Spec Kit.
 - The owner is the sole developer and approver: each artifact (spec, plan, tasks) is approved
   by the owner before the next step.
 - Branching follows **git flow**:
@@ -91,9 +107,11 @@ able to hold the whole system in their head.
   - `release/X.Y.Z` branches from `develop`, takes only fixes and version/changelog updates,
     and merges into both `main` (tagged) and `develop`.
   - `hotfix/X.Y.Z` branches from `main` for urgent fixes to the published site and merges into
-    both `main` (tagged) and `develop`.
-  - Merges into `develop` and `main` MUST use `--no-ff` so each feature, release, and hotfix
-    stays visible in history. Nothing is committed directly to `main` or `develop`.
+    both `main` (tagged) and `develop`. It holds small fixes only.
+  - `fix/short-name` branches from `develop` for a small fix that is not urgent. It merges back
+    into `develop` and reaches `main` with the next release. It has no `specs/` folder.
+  - Merges into `develop` and `main` MUST use `--no-ff` so each feature, fix, release, and
+    hotfix stays visible in history. Nothing is committed directly to `main` or `develop`.
 - The feature branch MUST be created before running `/speckit-specify`, so that all Spec Kit
   artifacts for the feature are committed on that branch.
 - Before a feature branch merges into `develop`, every acceptance scenario in its spec MUST be
@@ -111,4 +129,4 @@ able to hold the whole system in their head.
 - Every `plan.md` MUST pass the Constitution Check against the principles above; any deviation
   MUST be recorded and justified in the plan's Complexity Tracking section.
 
-**Version**: 1.1.0 | **Ratified**: 2026-11-08 | **Last Amended**: 2026-11-08
+**Version**: 1.2.0 | **Ratified**: 2026-11-08 | **Last Amended**: 2026-11-08
