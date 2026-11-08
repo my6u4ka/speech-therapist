@@ -182,10 +182,10 @@ manually per quickstart.md.
 
 **Independent Test**: quickstart scenario 12.
 
-- [ ] T015 [P] [US3] Create `games/synonyms/cover.svg`: square (viewBox 0 0 512 512), "at most
+- [x] T015 [P] [US3] Create `games/synonyms/cover.svg`: square (viewBox 0 0 512 512), "at most
   100 KB", friendly, and with no text. It should suggest "words that mean the same", e.g. two
   matching speech bubbles or twin cards with an equals sign.
-- [ ] T016 [US3] Add `{ id: "synonyms", name: "Синоними", image: "games/synonyms/cover.svg" }` to
+- [x] T016 [US3] Add `{ id: "synonyms", name: "Синоними", image: "games/synonyms/cover.svg" }` to
   `window.GAMES` in `games.js`.
 
 ---
