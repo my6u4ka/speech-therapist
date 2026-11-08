@@ -181,10 +181,26 @@ description: "Task list for the Word Meanings Game feature"
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T017 Run `node --test` and confirm that every suite passes.
-- [ ] T018 Run quickstart.md scenarios 1–15 on the local preview server at 360 px and desktop
+- [x] T017 Run `node --test` and confirm that every suite passes. (2026-11-08: 56/56 pass.)
+- [x] T018 Run quickstart.md scenarios 1–15 on the local preview server at 360 px and desktop
   widths. Record the results under this task and fix any failure.
-- [ ] T019 [P] Update `README.md`: add "Какво означава?" to the Games table, with the folder
+  - 2026-11-08, Chromium, local preview server at 360 px. Scenarios 1, 3–13 and 15 pass:
+    - the word is highlighted in the sentence (bold + underline);
+    - options are 328 px wide and at least 56 px tall;
+    - a wrong option is ruled out ("не е това", disabled, `try-again`), and a double tap or a tap
+      while busy is ignored;
+    - a right answer shows `correct`, locks the others, and shows "Напред";
+    - 8 distinct words per series; the last question plays `round`;
+    - the summary shows "От първия опит: 7 от 8." with ⭐⭐⭐ and plays `series`;
+    - "Играй пак" restarts the game;
+    - the portal has 3 tiles;
+    - nothing is stored.
+  - Scenario 2 (reshuffle on reload) is covered by the `buildOptions` tests. Scenario 14 was
+    checked at 360 px only (no sideways scroll).
+  - Fixed during review (content): "кошара" now reads "заградено място или постройка за овце"
+    instead of "ограда за овце". The leaf meaning of "лист" now reads "плоската зелена част на
+    клонката", because "зелената част на растението" also fits a stem.
+- [x] T019 [P] Update `README.md`: add "Какво означава?" to the Games table, with the folder
   `games/meanings/`, grades 3–4, what the child does, and the word bank
   `games/meanings/words.js`.
 - [ ] T020 **Owner**: review and correct every entry in `games/meanings/words.js` (quickstart
