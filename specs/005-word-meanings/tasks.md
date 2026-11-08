@@ -31,7 +31,7 @@ description: "Task list for the Word Meanings Game feature"
 
 ## Phase 1: Setup
 
-- [ ] T001 Create `games/meanings/index.html` from `games/antonyms/index.html`:
+- [x] T001 Create `games/meanings/index.html` from `games/antonyms/index.html`:
   - keep the home control, the sound control, the `sound.css` link and the `sound.js` script tag
     exactly as they are;
   - set `<title>Какво означава?</title>`;
@@ -48,7 +48,7 @@ description: "Task list for the Word Meanings Game feature"
   - load `../../assets/sound/sound.js`, then `words.js`, `logic.js` and `game.js`, as classic
     `<script defer>`;
   - add a Bulgarian `<noscript>`.
-- [ ] T002 [P] Create `games/meanings/game.css` as its own copy of the shared look in
+- [x] T002 [P] Create `games/meanings/game.css` as its own copy of the shared look in
   `games/antonyms/game.css`: tokens, body padding, font, the in-flow progress, the action button,
   the summary and the reduced-motion rules. Add:
   - `#word`: at least `2.4rem`, bold, centered;

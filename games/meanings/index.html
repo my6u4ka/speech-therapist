@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Какво означава?</title>
+  <link rel="stylesheet" href="../../assets/home/home.css">
+  <link rel="stylesheet" href="../../assets/sound/sound.css">
+  <link rel="stylesheet" href="game.css">
+  <script defer src="../../assets/sound/sound.js"></script>
+  <script defer src="words.js"></script>
+  <script defer src="logic.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body>
+  <a class="home-control" href="../../" aria-label="Начало"><img src="../../assets/home/home.svg" alt=""></a>
+  <button class="sound-control" type="button" aria-pressed="true" aria-label="Звук"><img src="../../assets/sound/speaker-on.svg" alt=""></button>
+  <!-- Games MUST NOT cover the top-left 80x80 px area (home control). -->
+  <main>
+    <section id="round">
+      <p id="progress" class="progress"></p>
+      <p id="instruction" class="instruction">Какво означава думата?</p>
+      <h1 id="word" class="word"></h1>
+      <p id="sentence" class="sentence"></p>
+      <div id="options" class="options"></div>
+      <p id="feedback" class="feedback" aria-live="polite"></p>
+      <button id="action" class="action" type="button" hidden>Напред</button>
+    </section>
+    <section id="summary" class="summary" hidden>
+      <p id="summary-line1" class="summary-text"></p>
+      <p id="summary-line2" class="summary-line2"></p>
+      <p id="summary-stars" class="summary-stars" aria-hidden="true"></p>
+      <button id="again" class="action" type="button">Играй пак</button>
+    </section>
+    <noscript><p class="noscript">Играта изисква JavaScript. Моля, включи го в браузъра.</p></noscript>
+  </main>
+</body>
+</html>
