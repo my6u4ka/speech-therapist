@@ -38,6 +38,9 @@
     return !reason;
   });
 
+  // Sound is optional: the game works if sound.js is missing.
+  function sfx(name) { if (globalThis.GameSound) globalThis.GameSound.play(name); }
+
   var round = null;
   // Series state lives in memory only (FR-015).
   var series = null;
@@ -86,6 +89,7 @@
       round.marked.add(word);
       setBtnState(word, "marked");
     }
+    sfx("tap");
     updateAction();
   }
 
@@ -142,6 +146,8 @@
     if (round.state !== "selecting" || els.action.disabled) return;
     var res = L.checkRound(round.set, Array.from(round.marked), round.attempt);
     applyStatuses(res.statuses);
+    // Exactly one sound per check (FR-004); the delayed round end below plays none.
+    sfx(L.checkSound(res, res.done && res.missingCount === 0));
 
     if (res.done) {
       var perfect = res.missingCount === 0 && res.found === round.set.synonyms.length &&
@@ -201,6 +207,7 @@
   function showSummary() {
     els.round.hidden = true;
     els.summary.hidden = false;
+    sfx("series");
     els.summaryText.textContent = "Браво! Намери " + series.found + " от " + series.total + " думи.";
     els.summaryStars.textContent = "⭐".repeat(L.starsFor(series.found, series.total));
     els.again.textContent = TEXT.again;

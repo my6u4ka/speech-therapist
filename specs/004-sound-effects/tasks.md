@@ -105,16 +105,16 @@ on/off control.
 
 **Independent Test**: quickstart scenarios 2–7, 11, 12.
 
-- [ ] T007 [US1] Add tests to `tests/synonyms.test.js` for `checkSound(result, perfect)` per
+- [x] T007 [US1] Add tests to `tests/synonyms.test.js` for `checkSound(result, perfect)` per
   contracts/sound-api.md:
   - `done` → "round";
   - not done, with a `wrong` status → "try-again";
   - not done, with no `wrong` status → "correct".
 
   Use results built with the existing `checkRound`.
-- [ ] T008 [US1] Implement `checkSound(result, perfect)` in `games/synonyms/logic.js`, and add it to
+- [x] T008 [US1] Implement `checkSound(result, perfect)` in `games/synonyms/logic.js`, and add it to
   the exported API, so that the T007 tests pass. Do not change any other function.
-- [ ] T009 [US1] In `games/synonyms/index.html`, add
+- [x] T009 [US1] In `games/synonyms/index.html`, add
   `<script defer src="../../assets/sound/sound.js"></script>` before `words.js`.
 
   In `games/synonyms/game.js`:
@@ -125,7 +125,7 @@ on/off control.
   - when the first-check "only wrong marks, nothing missing" case ends the round after the delay,
     do not play a second sound;
   - call `sfx("series")` in `showSummary()`.
-- [ ] T010 [P] [US1] In `games/antonyms/index.html`, add the same `sound.js` script tag before
+- [x] T010 [P] [US1] In `games/antonyms/index.html`, add the same `sound.js` script tag before
   `words.js`.
 
   In `games/antonyms/game.js`, add the same `sfx` helper and call:

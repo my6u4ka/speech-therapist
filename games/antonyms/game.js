@@ -38,6 +38,9 @@
     return !reason;
   });
 
+  // Sound is optional: the game works if sound.js is missing.
+  function sfx(name) { if (globalThis.GameSound) globalThis.GameSound.play(name); }
+
   var round = null;
   // Series state lives in memory only (FR-015).
   var series = null;
@@ -73,15 +76,18 @@
     var sel = round.selected;
     if (!sel) {
       select(item);
+      sfx("tap");
       return;
     }
     if (sel === item) {
       unselect();
+      sfx("tap");
       return;
     }
     if (sel.side === item.side) {
       idle(sel);
       select(item);
+      sfx("tap");
       return;
     }
     evaluate(sel, item);
@@ -97,13 +103,16 @@
         it.button.dataset.n = String(n);
       });
       if (n === round.pairs.length) {
+        sfx("round");
         completeRound();
       } else {
+        sfx("correct");
         els.feedback.textContent = TEXT.right;
       }
       return;
     }
     round.busy = true;
+    sfx("try-again");
     round.triedWrong.add(x.word);
     round.triedWrong.add(y.word);
     setState(x, "wrong");
@@ -177,6 +186,7 @@
   function showSummary() {
     els.round.hidden = true;
     els.summary.hidden = false;
+    sfx("series");
     els.line1.textContent = TEXT.summary1;
     els.line2.textContent = L.summaryLine2(series.firstTry, series.total);
     els.stars.textContent = "⭐".repeat(L.starsFor(series.firstTry, series.total));
