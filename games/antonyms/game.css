@@ -1,0 +1,179 @@
+/* Antonym game styles. Own copy of the look of the synonym game (Principle V, research R1). */
+:root {
+  --bg: #fff8e7;
+  --text: #1f1a14;
+  --card: #ffffff;
+  --border: #2b4a8b;
+  --accent: #1d4ed8;
+  --accent-text: #ffffff;
+  --selected-bg: #dbe7ff;
+  --wrong-bg: #ece7df;
+  --wrong-border: #8a8174;
+  --focus: #b91c1c;
+  --pair-1: #d9f2d9;
+  --pair-2: #ffe0b8;
+  --pair-3: #e6d6f7;
+  --pair-4: #c9ecf5;
+  --pair-5: #ffd3dc;
+  --pair-border: #1f1a14;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  /* Keep content clear of the home control's top-left 80x80 px area. */
+  padding: 88px 16px 16px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+main { max-width: 900px; margin: 0 auto; }
+
+[hidden] { display: none !important; }
+
+.progress {
+  position: absolute;
+  top: 24px;
+  right: 16px;
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.instruction {
+  margin: 0 0 16px;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.word {
+  position: relative;
+  min-height: 56px;
+  min-width: 0;
+  padding: 10px 8px;
+  font: inherit;
+  font-size: 1.3rem;
+  color: var(--text);
+  background: var(--card);
+  border: 3px solid var(--border);
+  border-radius: 16px;
+  cursor: pointer;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.word:focus-visible, .action:focus-visible {
+  outline: 5px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Selected: thick outline plus a marker, so it is clear without color. */
+.word.selected {
+  background: var(--selected-bg);
+  border-width: 6px;
+  padding: 7px 5px;
+  outline: 3px solid var(--text);
+  outline-offset: 2px;
+}
+.word.selected::before { content: "● "; }
+
+/* Wrong: muted, dotted, with a short shake. */
+.word.wrong {
+  background: var(--wrong-bg);
+  border-color: var(--wrong-border);
+  border-style: dotted;
+  color: #4a443a;
+  animation: shake 0.4s;
+  cursor: default;
+}
+
+/* Matched: pair color plus a "check n" badge; locked. */
+.word.matched {
+  border-color: var(--pair-border);
+  border-width: 5px;
+  padding: 8px 6px;
+  cursor: default;
+}
+.word.matched::after {
+  content: "✓ " attr(data-n);
+  position: absolute;
+  top: -12px;
+  right: -6px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--pair-border);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.4;
+}
+.word.pair-1 { background: var(--pair-1); }
+.word.pair-2 { background: var(--pair-2); }
+.word.pair-3 { background: var(--pair-3); }
+.word.pair-4 { background: var(--pair-4); }
+.word.pair-5 { background: var(--pair-5); }
+
+.feedback {
+  min-height: 2.6rem;
+  margin: 0 0 12px;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.action {
+  display: block;
+  width: 100%;
+  min-height: 56px;
+  padding: 12px;
+  font: inherit;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--accent-text);
+  background: var(--accent);
+  border: 0;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+/* Celebration when a round is complete (no sound). */
+.columns.celebrate { animation: bounce 0.8s 2; }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-12px); }
+  70% { transform: translateY(0); }
+}
+
+.summary { text-align: center; }
+.summary-text { margin: 16px 0; font-size: 1.8rem; font-weight: bold; }
+.summary-line2 { margin: 0 0 16px; font-size: 1.4rem; }
+.summary-stars { margin: 0 0 24px; font-size: 4rem; letter-spacing: 8px; }
+
+.noscript { font-size: 1.3rem; text-align: center; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

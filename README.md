@@ -22,6 +22,7 @@ requests, and stores no data about the child.
 | Game | Folder | For | What the child does |
 |---|---|---|---|
 | Синоними | `games/synonyms/` | grades 2–4 | Marks every word that means nearly the same as the reference word; 5 rounds per series. Word bank: `games/synonyms/words.js`. |
+| Антоними | `games/antonyms/` | grades 2–4 | Connects words from two columns into pairs with opposite meanings; 5 pairs per round, 5 rounds per series. Word bank: `games/antonyms/words.js`. |
 
 ## Run locally
 
