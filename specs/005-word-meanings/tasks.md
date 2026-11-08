@@ -67,7 +67,7 @@ description: "Task list for the Word Meanings Game feature"
 
 ## Phase 2: Foundational (Blocking Prerequisites)
 
-- [ ] T003 [P] Create `games/meanings/logic.js`. It is pure (no DOM) and exposes
+- [x] T003 [P] Create `games/meanings/logic.js`. It is pure (no DOM) and exposes
   `globalThis.MeaningLogic`, plus `module.exports` under Node. Implement:
   - `normalize(s)`;
   - `parseSentence(s)`: returns `{ before, word, after }` if `s` has exactly one `[...]` with
@@ -83,7 +83,7 @@ description: "Task list for the Word Meanings Game feature"
   - `validateBank(entries)`: returns a list of problems, covering invalid entries, "the same
     `word` and the same `right`", "at least 32 entries" and "at least 8 distinct words";
   - `shuffle(list, rng = Math.random)`: Fisher–Yates, returns a new array.
-- [ ] T004 [P] Create `games/meanings/words.js` with `globalThis.MEANING_ENTRIES = [...]`:
+- [x] T004 [P] Create `games/meanings/words.js` with `globalThis.MEANING_ENTRIES = [...]`:
   - **at least 32** entries for grades 3–4 (R8, SC-006);
   - 3–4 words with two meanings, each given as two entries (e.g. "коса", "ключ");
   - plausible wrong explanations;
@@ -95,7 +95,7 @@ description: "Task list for the Word Meanings Game feature"
 
   Make sure no entry has two explanations that are both right for the sentence. When in doubt,
   leave the entry out.
-- [ ] T005 Create `tests/meanings.test.js` with `node:test` and `node:assert/strict`. It requires
+- [x] T005 Create `tests/meanings.test.js` with `node:test` and `node:assert/strict`. It requires
   `games/meanings/logic.js` and `games/meanings/words.js`, and tests:
   - `parseSentence`, for one part, zero parts, two parts and an empty `[]`;
   - `wordCount`;
