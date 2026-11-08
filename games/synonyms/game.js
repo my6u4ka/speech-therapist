@@ -147,7 +147,15 @@
       var perfect = res.missingCount === 0 && res.found === round.set.synonyms.length &&
         !Object.keys(res.statuses).some(function (w) { return res.statuses[w] === "wrong"; });
       els.feedback.textContent = perfect ? TEXT.perfect : TEXT.revealed;
-      if (perfect) els.reference.classList.add("celebrate");
+      if (perfect) {
+        els.reference.classList.add("celebrate");
+        // Decorative star (R9). startRound resets the heading's text, which removes it.
+        var star = document.createElement("span");
+        star.className = "star";
+        star.setAttribute("aria-hidden", "true");
+        star.textContent = "⭐";
+        els.reference.appendChild(star);
+      }
       finishRound(res);
       return;
     }

@@ -1,6 +1,6 @@
 // words.js: word bank for the synonym game (grades 2-4).
 // Format and rules: specs/002-synonym-game/contracts/word-set.md
-// DRAFT: awaiting owner approval (T020). Do not release before the owner reviews every set.
+// Approved by the owner on 2026-11-08 (T020). New sets need owner approval before release.
 globalThis.SYNONYM_SETS = [
   { word: "голям", synonyms: ["огромен", "едър", "грамаден"],
     distractors: ["малък", "висок", "тежък", "бърз", "весел", "къс", "стар"] },

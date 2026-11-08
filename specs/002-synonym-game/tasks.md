@@ -214,7 +214,7 @@ manually per quickstart.md.
       the bookish "интелигентен" was replaced with "схватлив".
 - [x] T019 [P] Update `README.md`: list the synonym game, and add a "Tests" section with
   `node --test` and a note that Node is needed only for tests.
-- [ ] T020 **Owner**: review and correct every set in `games/synonyms/words.js` (quickstart scenario
+- [x] T020 **Owner**: review and correct every set in `games/synonyms/words.js` (quickstart scenario
   16, FR-011), then remove the "DRAFT" note from its header. This is required before the
   release.
 
@@ -261,4 +261,4 @@ Anytime:  T015 cover.svg
 
 ## Phase 7: Convergence
 
-- [ ] T021 Show a ⭐ next to the reference word on a perfect round (alongside the existing bounce), without changing the "Браво! Намери всички!" text, in `games/synonyms/game.js` and `games/synonyms/game.css`; hide it when the next round starts. Per plan: research R9 "the reference word bounces, and ⭐ appears" (partial)
+- [x] T021 Show a ⭐ next to the reference word on a perfect round (alongside the existing bounce), without changing the "Браво! Намери всички!" text, in `games/synonyms/game.js` and `games/synonyms/game.css`; hide it when the next round starts. Per plan: research R9 "the reference word bounces, and ⭐ appears" (partial)
