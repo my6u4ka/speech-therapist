@@ -3,6 +3,13 @@
 All notable changes to this project are listed here. Versions follow `vX.Y.Z` tags on `main`
 (see the git flow rules in `.specify/memory/constitution.md`).
 
+## [1.0.1] - 2026-11-08
+
+### Fixed
+
+- Every page now has a site icon (`assets/icon.svg`, a white speech bubble on blue). Browsers no
+  longer request a missing `favicon.ico`, which used to log a 404 error in the console.
+
 ## [1.0.0] - 2026-11-08
 
 The first public release on GitHub Pages: https://my6u4ka.github.io/speech-therapist/
