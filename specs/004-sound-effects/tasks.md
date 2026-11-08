@@ -55,7 +55,7 @@ on/off control.
     `[{freq:392,start:0,dur:0.12},{freq:392,start:0.18,dur:0.12}]`.
   - `round`: triangle, gain 0.30, notes C5, E5, G5, C6 (523, 659, 784, 1047). They start at 0,
     0.12, 0.24, and 0.36; the first three last 0.12 s and the last one 0.35 s.
-  - `series`: triangle, gain 0.30. It is the `round` arpeggio, then a chord of 523, 659, and 784,
+  - `series`: triangle, gain 0.30. It is the `round` arpeggio, then a chord of 1047, 1319, and 1568 (amended in review: one octave up so it never falls),
     all starting at 0.75 and lasting 0.8 s.
 
   Also define `LIMITS = { tap: 0.15, correct: 0.5, "try-again": 0.5, round: 1.2, series: 2 }`.
@@ -169,11 +169,30 @@ nothing stored.
   `specs/003-antonym-pairs/plan.md`: "Sound: superseded by feature 004 (sound effects); sad or
   punishing sounds remain forbidden." Add the same note after FR-006 in
   `specs/002-synonym-game/spec.md` and `specs/003-antonym-pairs/spec.md`.
-- [ ] T014 Run `node --test` and confirm that every test passes for all three suites.
-- [ ] T015 Run quickstart.md scenarios 1–14 on the local preview server and record the results under
+- [x] T014 Run `node --test` and confirm that every test passes for all three suites. (2026-11-08:
+  42/42 pass.)
+- [x] T015 Run quickstart.md scenarios 1–14 on the local preview server and record the results under
   this task. The owner must do the listening judgment for scenarios 2–7 (whether the sounds are
   friendly and nothing is sad or annoying).
-- [ ] T016 [P] Update `README.md`: describe `assets/sound/` (shared sounds synthesized in the
+  - **Environment:** 2026-11-08, Chromium on the local preview server at 360 px. The sound calls
+    were checked with a spy on `GameSound.play`, and the audio output with a count of created
+    oscillators.
+  - **Pass:** scenarios 1 (the control is top-right and overlaps neither the home control nor
+    "n / 5"), 2, 7, 8–10, 12–14, and these sound calls:
+    - **Синоними**: exactly one sound per check. "try-again" plays for wrong + missing; "correct"
+      for right marks with some still missing; "round" when the round ends, whether perfect, after
+      the second check, or via the delayed end, which plays no second sound. "series" plays on the
+      summary.
+    - **Антоними**: "tap" on select, unselect, and move; "correct" per pair, and "round" for the
+      last pair; "try-again" once per wrong pair, with taps during the pause silent.
+  - **Audio:** a real tap unlocks the `AudioContext` ("running") and creates oscillators; with
+    sound off, none are created. The icon and `aria-pressed` toggle. Nothing is stored.
+  - **Not checked:** scenario 11 (audio blocked) is covered by code review only, through the
+    try/catch and a null context. Scenarios 3–6, the listening judgment, are the owner's.
+  - **Fixed during review:** the "series" final chord (523/659/784) was below the arpeggio's last
+    note, so the fanfare fell at the end. It moved one octave up (1047/1319/1568), and the strict
+    "never falling" test was restored.
+- [x] T016 [P] Update `README.md`: describe `assets/sound/` (shared sounds synthesized in the
   browser, with no audio files, and on/off per page with nothing stored), and how a new game adds
   sound. Point to `specs/004-sound-effects/contracts/`.
 

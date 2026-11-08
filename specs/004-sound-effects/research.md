@@ -30,7 +30,7 @@ release, so there are no clicks.
 | `correct` | triangle notes at 784 (G5) and 1047 (C6), 0.12 s and 0.2 s | 0.30 | bright rising two-note chime |
 | `try-again` | sine notes at 392 (G4) and 392 (G4), 0.12 s each with a 0.06 s gap | 0.15 | soft, neutral "bum-bum", same pitch, never falling |
 | `round` | triangle notes at 523, 659, 784, 1047 (C5, E5, G5, C6), 0.12 s each, the last 0.35 s | 0.30 | cheerful rising arpeggio |
-| `series` | the `round` arpeggio, then a 0.8 s C-major chord (523, 659, 784) | 0.30 | short fanfare |
+| `series` | the `round` arpeggio, then a 0.8 s C-major chord one octave up (1047, 1319, 1568) | 0.30 | short fanfare that ends high |
 
 - **Rationale**:
   - the lengths stay within the FR-002 limits (tap under 0.15 s, correct and try-again under 0.5 s,

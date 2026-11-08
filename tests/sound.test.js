@@ -44,10 +44,8 @@ test("never falling: no melody note is lower than the one before it", () => {
         if (notes[j].start < notes[i].start && (!prev || notes[j].start > prev.start)) prev = notes[j];
       }
       if (!prev) continue;
-      // A chord (several notes starting together) is a held resolution, not a melody step,
-      // so it is exempt (the series fanfare ends on the C-major chord after the arpeggio).
-      const isChord = notes.filter((n) => n.start === notes[i].start).length > 1;
-      if (isChord) continue;
+      // Notes of one chord (same start) are exempt only among themselves: every note,
+      // including each chord note, must be at least as high as the last earlier note.
       assert.ok(notes[i].freq >= prev.freq, name + " falls at " + notes[i].start);
     }
   }

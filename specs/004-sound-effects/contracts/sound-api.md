@@ -1,7 +1,7 @@
 # Contract: `GameSound` (assets/sound/sound.js)
 
 A classic script that sets `globalThis.GameSound`. Under Node (tests), `module.exports` exposes
-`{ RECIPES, limits }` without touching any browser APIs.
+`{ RECIPES, LIMITS }` without touching any browser APIs.
 
 ## API
 

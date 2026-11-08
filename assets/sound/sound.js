@@ -25,9 +25,10 @@
     "series": {
       wave: "triangle", gain: 0.30,
       notes: ARPEGGIO.concat([
-        { freq: 523, start: 0.75, dur: 0.8 },
-        { freq: 659, start: 0.75, dur: 0.8 },
-        { freq: 784, start: 0.75, dur: 0.8 }
+        // Final C-major chord an octave up (C6-E6-G6), so the fanfare never falls (FR-003).
+        { freq: 1047, start: 0.75, dur: 0.8 },
+        { freq: 1319, start: 0.75, dur: 0.8 },
+        { freq: 1568, start: 0.75, dur: 0.8 }
       ])
     }
   };

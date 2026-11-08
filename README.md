@@ -49,6 +49,20 @@ Field rules: [specs/001-game-portal/contracts/game-entry.md](specs/001-game-port
 Every game must keep the home control:
 [contracts/home-control.md](specs/001-game-portal/contracts/home-control.md).
 
+## Sounds
+
+`assets/sound/` holds the shared sound effects (`tap`, `correct`, `try-again`, `round`, `series`).
+They are synthesized in the browser with the Web Audio API, so there are no audio files and no
+licenses. Sound is on whenever a game page opens, and the speaker button at the top right turns it
+off for that page; nothing is stored. A sound is never sad or punishing, and the tests in
+`tests/sound.test.js` enforce this.
+
+To add sound to a game:
+1. Include `assets/sound/sound.css` and `assets/sound/sound.js`, and add the speaker button.
+2. Call `GameSound.play(name)` through a guarded helper.
+
+Details: [specs/004-sound-effects/contracts/](specs/004-sound-effects/contracts/).
+
 ## How the project is developed
 
 - **Spec-driven development** with [GitHub Spec Kit](https://github.com/github/spec-kit). Each
