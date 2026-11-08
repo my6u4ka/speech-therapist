@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" fill="#fff1c9"/>
+  <!-- open book -->
+  <path d="M256 150 C200 120 120 120 60 140 L60 400 C120 380 200 380 256 410 Z" fill="#ffffff" stroke="#2b4a8b" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M256 150 C312 120 392 120 452 140 L452 400 C392 380 312 380 256 410 Z" fill="#ffffff" stroke="#2b4a8b" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M256 150 L256 410" stroke="#2b4a8b" stroke-width="10"/>
+  <!-- text lines on the left page -->
+  <g stroke="#9db4e6" stroke-width="12" stroke-linecap="round">
+    <path d="M100 200 C140 192 190 192 222 204"/>
+    <path d="M100 245 C140 237 190 237 222 249"/>
+    <path d="M100 290 C140 282 190 282 222 294"/>
+    <path d="M100 335 C140 327 190 327 222 339"/>
+  </g>
+  <!-- big question mark on the right page -->
+  <path d="M330 235 C330 190 360 170 392 170 C428 170 450 195 450 225 C450 255 425 268 405 285 C395 294 392 303 392 318" fill="none" stroke="#d9480f" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" transform="translate(-36 0)"/>
+  <circle cx="356" cy="365" r="17" fill="#d9480f"/>
+  <!-- sparkles -->
+  <g fill="#f5b700">
+    <path d="M110 80 L120 105 L145 115 L120 125 L110 150 L100 125 L75 115 L100 105 Z"/>
+    <path d="M410 60 L417 78 L435 85 L417 92 L410 110 L403 92 L385 85 L403 78 Z"/>
+  </g>
+</svg>

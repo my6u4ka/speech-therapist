@@ -1,0 +1,169 @@
+/* Word meanings game styles. Own copy of the shared look (Principle V, research R1). */
+:root {
+  --bg: #fff8e7;
+  --text: #1f1a14;
+  --card: #ffffff;
+  --border: #2b4a8b;
+  --accent: #1d4ed8;
+  --accent-text: #ffffff;
+  --wrong-bg: #ece7df;
+  --wrong-border: #8a8174;
+  --correct-bg: #d9f2d9;
+  --correct-border: #1e7a2e;
+  --mark-bg: #ffe9a3;
+  --focus: #b91c1c;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  /* Keep content clear of the home control's top-left 80x80 px area. */
+  padding: 88px 16px 16px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+main { max-width: 900px; margin: 0 auto; }
+
+[hidden] { display: none !important; }
+
+.progress {
+  position: static;
+  margin: 0 0 8px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.instruction {
+  margin: 0 0 12px;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.word {
+  margin: 0 0 12px;
+  font-size: 2.4rem;
+  font-weight: bold;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.sentence {
+  margin: 0 0 20px;
+  font-size: 1.3rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.sentence mark {
+  padding: 0 4px;
+  font-weight: bold;
+  text-decoration: underline;
+  color: var(--text);
+  background: var(--mark-bg);
+  border-radius: 6px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.option {
+  display: block;
+  width: 100%;
+  min-height: 56px;
+  min-width: 0;
+  padding: 10px 14px;
+  font: inherit;
+  font-size: 1.2rem;
+  text-align: left;
+  color: var(--text);
+  background: var(--card);
+  border: 3px solid var(--border);
+  border-radius: 16px;
+  cursor: pointer;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.option:focus-visible, .action:focus-visible {
+  outline: 5px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Correct: green plus a check mark, so it is clear without color. */
+.option.correct {
+  background: var(--correct-bg);
+  border-color: var(--correct-border);
+  border-width: 5px;
+  padding: 8px 12px;
+  font-weight: bold;
+  cursor: default;
+}
+.option.correct::before { content: "✓ "; }
+
+/* Ruled out: muted, dashed border and a real tag element (announced by screen readers). */
+.option.ruled-out {
+  background: var(--wrong-bg);
+  border-color: var(--wrong-border);
+  border-style: dashed;
+  color: #4a443a;
+  cursor: default;
+}
+.option .tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #fff;
+  background: var(--wrong-border);
+  border-radius: 999px;
+}
+
+/* Locked: the other options after a right answer. */
+.option.locked {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.feedback {
+  min-height: 2.6rem;
+  margin: 0 0 12px;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.action {
+  display: block;
+  width: 100%;
+  min-height: 56px;
+  padding: 12px;
+  font: inherit;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--accent-text);
+  background: var(--accent);
+  border: 0;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.summary { text-align: center; }
+.summary-text { margin: 16px 0; font-size: 1.8rem; font-weight: bold; }
+.summary-line2 { margin: 0 0 16px; font-size: 1.4rem; }
+.summary-stars { margin: 0 0 24px; font-size: 4rem; letter-spacing: 8px; }
+
+.noscript { font-size: 1.3rem; text-align: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
