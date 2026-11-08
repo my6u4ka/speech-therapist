@@ -115,7 +115,58 @@
     }).length;
   }
 
+  // One greedy pass: fills rounds from a shuffled bank (research R4). Returns full rounds only.
+  function greedySeries(pairs, rounds, perRound, rng) {
+    var pool = shuffle(pairs, rng);
+    var series = [];
+    while (series.length < rounds) {
+      var round = [];
+      var rest = [];
+      pool.forEach(function (p) {
+        if (round.length < perRound && round.every(function (q) { return !conflicts(p, q); })) {
+          round.push(p);
+        } else {
+          rest.push(p);
+        }
+      });
+      if (round.length < perRound) break;
+      series.push(round);
+      pool = rest;
+    }
+    return series;
+  }
+
+  // Builds up to `rounds` rounds of `perRound` pairs. No round holds conflicting pairs and no
+  // pair repeats. Retries up to 20 times and keeps the longest result.
+  function buildSeries(pairs, rounds, perRound, rng) {
+    if (rounds === undefined) rounds = 5;
+    if (perRound === undefined) perRound = 5;
+    var best = [];
+    for (var attempt = 0; attempt < 20; attempt++) {
+      var series = greedySeries(pairs, rounds, perRound, rng);
+      if (series.length > best.length) best = series;
+      if (best.length === rounds) break;
+    }
+    return best;
+  }
+
+  // 1-3 stars by share found; never 0 (positive feedback only).
+  function starsFor(found, total) {
+    if (!(total > 0)) return 1;
+    var share = found / total;
+    if (share >= 0.8) return 3;
+    if (share >= 0.5) return 2;
+    return 1;
+  }
+
+  function summaryLine2(firstTry, total) {
+    return "От първия опит: " + firstTry + " от " + total + ".";
+  }
+
   var api = {
+    buildSeries: buildSeries,
+    starsFor: starsFor,
+    summaryLine2: summaryLine2,
     normalize: normalize,
     validatePair: validatePair,
     validateBank: validateBank,

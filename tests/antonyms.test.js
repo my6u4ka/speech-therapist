@@ -129,3 +129,78 @@ test("firstTryCount counts pairs where neither word was tried wrong", () => {
   assert.equal(L.firstTryCount(ROUND, new Set(["ден", "студен", "малък"])), 2);
   assert.equal(L.firstTryCount(ROUND, ["ден", "горещ"]), 3);
 });
+
+// --- Series (US2) ---
+
+// Small deterministic rng (mulberry32) so the series tests are repeatable.
+function seeded(seed) {
+  let s = seed >>> 0;
+  return () => {
+    s = (s + 0x6d2b79f5) >>> 0;
+    let t = s;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function checkSeries(series) {
+  const seen = new Set();
+  for (const round of series) {
+    assert.equal(round.length, 5);
+    for (let i = 0; i < round.length; i++) {
+      const key = L.normalize(round[i].a) + "|" + L.normalize(round[i].b);
+      assert.ok(!seen.has(key), "pair repeats: " + key);
+      seen.add(key);
+      for (let j = i + 1; j < round.length; j++) {
+        assert.equal(L.conflicts(round[i], round[j]), false,
+          round[i].a + "-" + round[i].b + " conflicts with " + round[j].a + "-" + round[j].b);
+      }
+    }
+  }
+}
+
+test("buildSeries builds 5 rounds of 5 conflict-free pairs from the real bank", () => {
+  for (let seed = 1; seed <= 50; seed++) {
+    const series = L.buildSeries(BANK, 5, 5, seeded(seed));
+    assert.equal(series.length, 5, "seed " + seed);
+    checkSeries(series);
+  }
+});
+
+test("buildSeries without an rng also builds a full series", () => {
+  for (let i = 0; i < 20; i++) {
+    const series = L.buildSeries(BANK, 5, 5);
+    assert.equal(series.length, 5);
+    checkSeries(series);
+  }
+});
+
+test("buildSeries gives a shorter series from a small bank and never throws", () => {
+  const small = BANK.slice(0, 7);
+  const series = L.buildSeries(small, 5, 5, seeded(7));
+  assert.ok(series.length <= 1);
+  series.forEach((r) => assert.equal(r.length, 5));
+  assert.deepEqual(L.buildSeries([], 5, 5, seeded(1)), []);
+  assert.deepEqual(L.buildSeries(BANK.slice(0, 3), 5, 5, seeded(1)), []);
+});
+
+test("buildSeries does not mutate the bank", () => {
+  const copy = JSON.stringify(BANK);
+  L.buildSeries(BANK, 5, 5, seeded(3));
+  assert.equal(JSON.stringify(BANK), copy);
+});
+
+test("starsFor returns 1-3 and never 0", () => {
+  assert.equal(L.starsFor(25, 25), 3);
+  assert.equal(L.starsFor(20, 25), 3);
+  assert.equal(L.starsFor(19, 25), 2);
+  assert.equal(L.starsFor(13, 25), 2);
+  assert.equal(L.starsFor(12, 25), 1);
+  assert.equal(L.starsFor(0, 25), 1);
+  assert.equal(L.starsFor(0, 0), 1);
+});
+
+test("summaryLine2 formats the first-try line", () => {
+  assert.equal(L.summaryLine2(24, 25), "От първия опит: 24 от 25.");
+});

@@ -9,13 +9,21 @@
     right: "Да!",
     retry: "Опитай пак!",
     roundDone: "Браво! Всички двойки са свързани!",
-    next: "Напред"
+    next: "Напред",
+    summary1: "Браво! Свърза всички двойки!"
   };
+  var SERIES_ROUNDS = 5;
   var PER_ROUND = 5;
   var WRONG_DELAY_MS = 900;
 
   var els = {
     round: document.getElementById("round"),
+    progress: document.getElementById("progress"),
+    summary: document.getElementById("summary"),
+    line1: document.getElementById("summary-line1"),
+    line2: document.getElementById("summary-line2"),
+    stars: document.getElementById("summary-stars"),
+    again: document.getElementById("again"),
     left: document.getElementById("left"),
     right: document.getElementById("right"),
     columns: document.querySelector(".columns"),
@@ -31,16 +39,8 @@
   });
 
   var round = null;
-
-  // Temporary (US1): one round from conflict-free pairs, taken greedily from a shuffled bank.
-  function pickRoundPairs() {
-    var picked = [];
-    L.shuffle(validPairs).forEach(function (p) {
-      if (picked.length >= PER_ROUND) return;
-      if (picked.every(function (q) { return !L.conflicts(p, q); })) picked.push(p);
-    });
-    return picked;
-  }
+  // Series state lives in memory only (FR-015).
+  var series = null;
 
   function setState(item, cls, extra) {
     var btn = item.button;
@@ -156,9 +156,50 @@
     renderColumn(els.right, round.right);
   }
 
+  function showProgress() {
+    els.progress.textContent = (series.index + 1) + " / " + series.rounds.length;
+  }
+
+  function startSeries() {
+    series = {
+      rounds: L.buildSeries(validPairs, SERIES_ROUNDS, PER_ROUND),
+      index: 0,
+      firstTry: 0,
+      total: 0
+    };
+    if (series.rounds.length === 0) return;
+    els.summary.hidden = true;
+    els.round.hidden = false;
+    showProgress();
+    startRound(series.rounds[0]);
+  }
+
+  function showSummary() {
+    els.round.hidden = true;
+    els.summary.hidden = false;
+    els.line1.textContent = TEXT.summary1;
+    els.line2.textContent = L.summaryLine2(series.firstTry, series.total);
+    els.stars.textContent = "⭐".repeat(L.starsFor(series.firstTry, series.total));
+    els.again.focus();
+  }
+
+  function next() {
+    series.firstTry += L.firstTryCount(round.pairs, round.triedWrong);
+    series.total += round.pairs.length;
+    series.index++;
+    if (series.index >= series.rounds.length) {
+      showSummary();
+      return;
+    }
+    showProgress();
+    startRound(series.rounds[series.index]);
+  }
+
+  els.again.addEventListener("click", startSeries);
+
   els.action.addEventListener("click", function () {
-    if (matchedCount() === round.pairs.length) startRound(pickRoundPairs());
+    if (matchedCount() === round.pairs.length) next();
   });
 
-  if (validPairs.length > 0) startRound(pickRoundPairs());
+  if (validPairs.length > 0) startSeries();
 })();
