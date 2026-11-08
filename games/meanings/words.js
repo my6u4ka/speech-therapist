@@ -1,6 +1,6 @@
 // words.js: word meanings for grades 3-4.
 // Format and rules: specs/005-word-meanings/contracts/meaning-entry.md
-// DRAFT: awaiting owner approval (T020). Do not publish before the owner has reviewed every entry.
+// Approved by the owner on 2026-11-08 (T020). New entries need owner approval before release.
 // The word is marked with [ ] in the sentence; an inflected form is allowed.
 // A word with two meanings has two entries, one per meaning, each with its own sentence.
 globalThis.MEANING_ENTRIES = [
@@ -45,12 +45,6 @@ globalThis.MEANING_ENTRIES = [
     sentence: "Татко заключи вратата и взе [ключа].",
     right: "метален предмет за отключване",
     wrong: ["извор с чиста вода", "знак в началото на нотите"]
-  },
-  {
-    word: "ключ",
-    sentence: "Жадните пътници пиха вода от планинския [ключ].",
-    right: "извор с чиста вода",
-    wrong: ["метален предмет за отключване", "каменна пътека в планината"]
   },
   {
     word: "кора",

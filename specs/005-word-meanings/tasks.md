@@ -203,7 +203,7 @@ description: "Task list for the Word Meanings Game feature"
 - [x] T019 [P] Update `README.md`: add "Какво означава?" to the Games table, with the folder
   `games/meanings/`, grades 3–4, what the child does, and the word bank
   `games/meanings/words.js`.
-- [ ] T020 **Owner**: review and correct every entry in `games/meanings/words.js` (quickstart
+- [x] T020 **Owner**: review and correct every entry in `games/meanings/words.js` (quickstart
   scenario 16, FR-009), then remove the "DRAFT" note. This is required before the release.
 
 ---
