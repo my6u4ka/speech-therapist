@@ -124,13 +124,24 @@
     return a;
   }
 
+  // The 3 explanations of an entry in random order: [{ text, isRight }].
+  function buildOptions(entry, rng) {
+    var items = [
+      { text: entry.right, isRight: true },
+      { text: entry.wrong[0], isRight: false },
+      { text: entry.wrong[1], isRight: false }
+    ];
+    return shuffle(items, rng);
+  }
+
   var api = {
     normalize: normalize,
     parseSentence: parseSentence,
     wordCount: wordCount,
     validateEntry: validateEntry,
     validateBank: validateBank,
-    shuffle: shuffle
+    shuffle: shuffle,
+    buildOptions: buildOptions
   };
 
   globalThis.MeaningLogic = api;

@@ -116,23 +116,23 @@ description: "Task list for the Word Meanings Game feature"
 
 **Independent Test**: quickstart scenarios 1–7, 14 and 15.
 
-- [ ] T006 [US1] Add a test to `tests/meanings.test.js` for `buildOptions(entry, rng)`: it returns 3
+- [x] T006 [US1] Add a test to `tests/meanings.test.js` for `buildOptions(entry, rng)`: it returns 3
   items `{ text, isRight }`, exactly one with `isRight`, and every explanation exactly once.
-- [ ] T007 [US1] Implement `buildOptions` in `games/meanings/logic.js` so that the T006 test passes.
-- [ ] T008 [US1] Create `games/meanings/game.js`, part 1:
+- [x] T007 [US1] Implement `buildOptions` in `games/meanings/logic.js` so that the T006 test passes.
+- [x] T008 [US1] Create `games/meanings/game.js`, part 1:
   - take the valid entries and skip the invalid ones with `console.warn`;
   - add `function sfx(name) { if (globalThis.GameSound) globalThis.GameSound.play(name); }`;
   - show one random question. Render `#word` and `#sentence` from `parseSentence`, as a text node,
     then a `<mark>`, then a text node, using `textContent` only;
   - render `#options` as `<button type="button" class="option">` from `buildOptions`.
-- [ ] T009 [US1] In `games/meanings/game.js`, implement the answer flow per
+- [x] T009 [US1] In `games/meanings/game.js`, implement the answer flow per
   contracts/question-flow.md:
   - **Right:** `correct`, all others `locked`, `sfx("correct")`, "Браво!", and show "Напред".
     In this story "Напред" shows another random question.
   - **Wrong:** `ruled-out` with a `<span class="tag">не е това</span>`, `disabled`,
     `sfx("try-again")`, "Опитай пак!", set `firstTry = false`, and `busy` for 400 ms.
   - Ignore taps while `busy` or after the question is answered.
-- [ ] T010 [P] [US1] Check `games/meanings/game.css` against the option states in
+- [x] T010 [P] [US1] Check `games/meanings/game.css` against the option states in
   contracts/question-flow.md and add anything that is missing.
 
 **Checkpoint**: one question plays end to end with sounds.

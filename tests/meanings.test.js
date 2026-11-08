@@ -99,3 +99,17 @@ test("shuffle keeps every item and does not mutate its input", () => {
 test("the real word bank has no problems", () => {
   assert.deepEqual(L.validateBank(BANK), []);
 });
+
+test("buildOptions returns 3 options, exactly one right, each explanation once", () => {
+  const e = valid();
+  const opts = L.buildOptions(e);
+  assert.equal(opts.length, 3);
+  assert.equal(opts.filter((o) => o.isRight).length, 1);
+  assert.equal(opts.find((o) => o.isRight).text, e.right);
+  assert.deepEqual(
+    opts.map((o) => o.text).sort(),
+    [e.right, ...e.wrong].sort()
+  );
+  const seeded = L.buildOptions(e, () => 0.3);
+  assert.equal(seeded.length, 3);
+});
