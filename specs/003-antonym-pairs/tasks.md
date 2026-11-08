@@ -201,7 +201,7 @@ with `node --test` (Node built-ins only). The UI is checked manually per quickst
     white-on-dark pill. data-model.md also now documents the `side` field that the agent added.
 - [x] T019 [P] Update `README.md`: add "Антоними" to the Games table (folder, grades 2–4, what the
   child does, and the word bank `games/antonyms/words.js`).
-- [ ] T020 **Owner**: review and correct every pair in `games/antonyms/words.js` (quickstart
+- [x] T020 **Owner**: review and correct every pair in `games/antonyms/words.js` (quickstart
   scenario 18, FR-011), then remove the "DRAFT" note. This is required before the release.
 
 ---

@@ -1,6 +1,6 @@
 // words.js: antonym pairs for grades 2-4.
 // Format and rules: specs/003-antonym-pairs/contracts/antonym-pair.md
-// DRAFT: awaiting owner approval (T020). Pairs need owner approval before release.
+// Approved by the owner on 2026-11-08 (T020). New pairs need owner approval before release.
 // "avoid" lists words that must not share a round with the pair (a close synonym or a
 // second possible opposite). A word shared by two pairs is handled automatically.
 globalThis.ANTONYM_PAIRS = [
