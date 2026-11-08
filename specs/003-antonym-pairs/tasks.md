@@ -29,7 +29,7 @@ with `node --test` (Node built-ins only). The UI is checked manually per quickst
 
 ## Phase 1: Setup
 
-- [ ] T001 Create `games/antonyms/index.html` from `games/_template/index.html`:
+- [x] T001 Create `games/antonyms/index.html` from `games/_template/index.html`:
   - keep the home control exactly as it is;
   - set `<title>Антоними</title>` and link `game.css`;
   - add `#round` with:
@@ -43,7 +43,7 @@ with `node --test` (Node built-ins only). The UI is checked manually per quickst
   - load `words.js`, `logic.js`, and `game.js` as classic `<script defer>`;
   - add a Bulgarian `<noscript>` message;
   - keep the top-left 80×80 px area clear.
-- [ ] T002 [P] Create `games/antonyms/game.css`, an own copy of the look of
+- [x] T002 [P] Create `games/antonyms/game.css`, an own copy of the look of
   `games/synonyms/game.css` (tokens, body padding `88px 16px 16px`, font stack, action button,
   progress, summary, `prefers-reduced-motion`). Add:
   - `.columns`: a 2-column grid with a 16 px gap; each column is a vertical stack with a 12 px gap;
