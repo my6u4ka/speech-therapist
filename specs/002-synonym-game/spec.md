@@ -34,13 +34,15 @@ correct and incorrect choice gets the right feedback.
    marked; **When** they tap it again, **Then** it is unmarked.
 3. **Given** no word is marked, **When** the child looks at "Провери", **Then** it cannot be
    pressed yet.
-4. **Given** some words are marked, **When** the child taps "Провери", **Then** every correctly
-   marked synonym is shown as correct, every marked non-synonym is shown gently as "not this one",
-   and every missed synonym is pointed out, all with positive wording.
+4. **Given** some words are marked, **When** the child taps "Провери" for the first time, **Then**
+   every correctly marked synonym is shown as correct, every marked non-synonym is shown gently
+   as "not this one", and the child is told how many synonyms are still missing without
+   revealing which, all with positive wording.
 5. **Given** all synonyms were found and nothing wrong was marked, **When** the child checks,
    **Then** the game celebrates the round.
-6. **Given** the round has mistakes, **When** feedback is shown, **Then** the child gets one more
-   try to fix the marks and check again before the correct answer is shown (see FR-007).
+6. **Given** the first check had mistakes, **When** the child fixes the marks and checks again,
+   **Then** the round ends: every candidate's status is shown, including the missed synonyms,
+   and the child can continue (see FR-007).
 
 ---
 
@@ -112,12 +114,15 @@ game.
 - **FR-003**: The child MUST be able to mark and unmark any candidate word by tapping or clicking
   it, and the marked state MUST be clearly visible without relying on color alone.
 - **FR-004**: "Провери" MUST be available only when at least one word is marked.
-- **FR-005**: After "Провери", the game MUST show for every candidate whether it was a correct mark,
-  a wrong mark, or a missed synonym. Unmarked distractors stay neutral.
+- **FR-005**: After the first "Провери", the game MUST show each marked word as a correct mark or a
+  wrong mark, and say how many synonyms are still missing, without revealing which. After the
+  round's final check, it MUST also show every missed synonym. Unmarked distractors stay neutral.
 - **FR-006**: All feedback MUST be positive and encouraging. There MUST be no penalty, lost
   points, sad sounds, or time limit (constitution I).
-- **FR-007**: After a check with mistakes, the child MUST get one more try. After that second check,
-  the game MUST show all synonyms as the answer and let the child continue.
+- **FR-007**: After a first check with mistakes (a wrong mark or a missed synonym), the child MUST
+  get one more try. Correct marks stay fixed, and wrong marks are cleared so they can be
+  reconsidered. The second check ends the round. A first check with no mistakes also ends the
+  round.
 - **FR-008**: Each round MUST tell the child how many synonyms to find, in a short instruction under
   the reference word (e.g. "Намери 3 думи с близко значение"), using the correct Bulgarian form
   for one word ("Намери 1 дума ...") and for several. The instruction is a guide only; the child
