@@ -1,0 +1,45 @@
+# Игри с думи (Word Games)
+
+Small web games that help children in grades 1–4 with written expression and with growing their
+passive and active vocabulary. The games and their content are in Bulgarian.
+
+**Live site:** https://my6u4ka.github.io/speech-therapist/
+
+## What is here
+
+- `index.html`: the portal. Every game appears as a tile with a large picture and its name.
+- `games.js`: the list of games shown on the portal.
+- `games/<id>/`: one folder per game. Games are independent of each other.
+- `games/_template/`: a starter for a new game, with the home control already in place.
+- `assets/`: portal styles and script, plus the shared home control.
+- `404.html`: a friendly "game not found" page.
+
+The site is plain HTML, CSS, and JavaScript. It has no build step, no server, no external
+requests, and stores no data about the child.
+
+## Run locally
+
+Open `index.html` in a browser. No server or build step is needed.
+
+`404.html` uses absolute `/speech-therapist/` paths, so it only works on the published site.
+
+## Add a game
+
+1. Copy `games/_template/` to `games/<id>/` and build the game there.
+2. Put a square cover picture in `games/<id>/` (at least 512×512 px, at most 100 KB).
+3. Add one entry to `games.js`.
+
+Field rules: [specs/001-game-portal/contracts/game-entry.md](specs/001-game-portal/contracts/game-entry.md).
+Every game must keep the home control:
+[contracts/home-control.md](specs/001-game-portal/contracts/home-control.md).
+
+## How the project is developed
+
+- **Spec-driven development** with [GitHub Spec Kit](https://github.com/github/spec-kit). Each
+  feature goes through `/speckit-specify` → `/speckit-plan` → `/speckit-tasks` →
+  `/speckit-implement` → `/speckit-converge`, and its documents live in `specs/NNN-name/`.
+- **Constitution:** the project's non-negotiable rules are in
+  [.specify/memory/constitution.md](.specify/memory/constitution.md).
+- **Git flow:** `main` is the published site, served by GitHub Pages; `develop` is the integration
+  branch. New work goes on `feature/NNN-name`, `release/X.Y.Z`, or `hotfix/X.Y.Z`, and every
+  merge uses `--no-ff`.
