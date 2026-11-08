@@ -256,3 +256,9 @@ Anytime:  T015 cover.svg
 
 - 20 tasks: Setup 2, Foundational 3, US1 5, US2 4, US3 2, Polish 4.
 - Commit after each phase on `feature/002-synonym-game`.
+
+---
+
+## Phase 7: Convergence
+
+- [ ] T021 Show a ⭐ next to the reference word on a perfect round (alongside the existing bounce), without changing the "Браво! Намери всички!" text, in `games/synonyms/game.js` and `games/synonyms/game.css`; hide it when the next round starts. Per plan: research R9 "the reference word bounces, and ⭐ appears" (partial)
