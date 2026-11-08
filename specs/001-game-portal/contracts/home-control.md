@@ -29,4 +29,7 @@ Required by FR-006 and User Story 2. `games/_template/index.html` already follow
 - The link MUST point to the portal with a relative path (`../../` from `games/<id>/`).
 - A game MUST NOT hide, cover, or restyle the home control, and MUST NOT put its own controls in
   the top-left 80×80 px area.
-- `404.html` includes the same control, pointing to `./`.
+- `404.html` includes the same control, but with **absolute** site paths
+  (`/speech-therapist/`, `/speech-therapist/assets/home/...`). GitHub Pages serves `404.html`
+  at whatever missing address was requested, at any folder depth, so relative paths would break
+  there. This is the only page that uses absolute paths, and it only works on the published site.

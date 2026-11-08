@@ -30,7 +30,9 @@ alternatives considered.
 
 - **Decision**: add a root `404.html` in Bulgarian, with a friendly message and the home control.
   GitHub Pages serves it for any missing path under the site.
-- **Rationale**: it covers the "game fails to open" edge case with no code.
+- **Rationale**: it covers the "game fails to open" edge case with no code. Because Pages serves
+  this page at the missing address (any depth), it uses absolute `/speech-therapist/` paths for
+  its stylesheet, icon, and home link. This is the one exception to "relative URLs only" (R8).
 - **Alternatives considered**: checking each game's address from the portal before navigating.
   This adds requests and complexity, and it fails from `file://`.
 
