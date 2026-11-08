@@ -115,10 +115,15 @@ main { max-width: 900px; margin: 0 auto; }
 .word.matched::after {
   content: "✓ " attr(data-n);
   position: absolute;
-  top: -2px;
-  right: 4px;
-  font-size: 0.8rem;
+  top: -12px;
+  right: -6px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--pair-border);
+  color: #fff;
+  font-size: 1rem;
   font-weight: bold;
+  line-height: 1.4;
 }
 .word.pair-1 { background: var(--pair-1); }
 .word.pair-2 { background: var(--pair-2); }

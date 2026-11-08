@@ -28,7 +28,7 @@ compared after trimming and lowercasing. Conflicting pairs never share a round.
 | Field | Meaning |
 |---|---|
 | `pairs` | 5 pairs, none of them in conflict with each other |
-| `left`, `right` | the two shuffled columns. Each item is `{ word, pairIndex }`. |
+| `left`, `right` | the two shuffled columns. Each item is `{ word, pairIndex, side }`, where `side` is `"left"` or `"right"`. `isPair` uses it to require opposite columns. |
 | `selected` | the currently selected item, or none |
 | `matched` | for each pair index: the pair number 1–5 in the order made, or none |
 | `triedWrong` | the words that were part of a wrong pairing in this round |

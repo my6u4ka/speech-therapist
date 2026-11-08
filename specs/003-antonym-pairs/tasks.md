@@ -181,10 +181,25 @@ with `node --test` (Node built-ins only). The UI is checked manually per quickst
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T017 Run `node --test` and confirm that every test passes, for both games.
-- [ ] T018 Run quickstart.md scenarios 1–17 on the local preview server at 360 px and desktop widths,
+- [x] T017 Run `node --test` and confirm that every test passes, for both games. (2026-11-08:
+  34/34 pass.)
+- [x] T018 Run quickstart.md scenarios 1–17 on the local preview server at 360 px and desktop widths,
   record the results under this task, and fix any failures.
-- [ ] T019 [P] Update `README.md`: add "Антоними" to the Games table (folder, grades 2–4, what the
+  - 2026-11-08, Chromium on the local preview server at 360 px. Scenarios 1–7 and 9–17 pass:
+    - selecting, unselecting, and moving the selection;
+    - a wrong pair ("Опитай пак!"), with input ignored while it shows;
+    - pairing right-to-left;
+    - locked matched words;
+    - round complete and "Напред";
+    - a 5-round series with no repeated word and no ambiguous word in any round;
+    - the summary "От първия опит: 23 от 25." ⭐⭐⭐ (one wrong try touches 2 pairs);
+    - "Играй пак";
+    - both portal tiles;
+    - no storage and no outside requests.
+  - Scenario 8 (grayscale) was not emulated. Pairs carry "✓ n" numbers.
+  - Fixed during review: the "✓ n" badge was 12.8 px, too small for children. It is now a 16 px
+    white-on-dark pill. data-model.md also now documents the `side` field that the agent added.
+- [x] T019 [P] Update `README.md`: add "Антоними" to the Games table (folder, grades 2–4, what the
   child does, and the word bank `games/antonyms/words.js`).
 - [ ] T020 **Owner**: review and correct every pair in `games/antonyms/words.js` (quickstart
   scenario 18, FR-011), then remove the "DRAFT" note. This is required before the release.
