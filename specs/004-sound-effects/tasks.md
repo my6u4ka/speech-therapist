@@ -28,11 +28,11 @@ on/off control.
 
 ## Phase 1: Setup
 
-- [ ] T001 [P] Create `assets/sound/speaker-on.svg`: a bold white speaker with two sound waves, in a
+- [x] T001 [P] Create `assets/sound/speaker-on.svg`: a bold white speaker with two sound waves, in a
   square viewBox, readable at 40 px (same style as `assets/home/home.svg`).
-- [ ] T002 [P] Create `assets/sound/speaker-off.svg`: the same speaker with a white ✕ instead of the
+- [x] T002 [P] Create `assets/sound/speaker-off.svg`: the same speaker with a white ✕ instead of the
   waves.
-- [ ] T003 [P] Create `assets/sound/sound.css` per contracts/sound-control.md:
+- [x] T003 [P] Create `assets/sound/sound.css` per contracts/sound-control.md:
   - `.sound-control`:
     - fixed at `top: 8px; right: 8px`, with a high `z-index`;
     - 64×64 px, with no padding inside the button;
@@ -46,7 +46,7 @@ on/off control.
 
 ## Phase 2: Foundational (Blocking Prerequisites)
 
-- [ ] T004 Create `assets/sound/sound.js`, part 1. It is a classic script with an IIFE that defines
+- [x] T004 Create `assets/sound/sound.js`, part 1. It is a classic script with an IIFE that defines
   `RECIPES` exactly as in research R2 and data-model.md:
   - `tap`: sine, gain 0.15, notes `[{freq:880,start:0,dur:0.07}]`.
   - `correct`: triangle, gain 0.30, notes
@@ -61,7 +61,7 @@ on/off control.
   Also define `LIMITS = { tap: 0.15, correct: 0.5, "try-again": 0.5, round: 1.2, series: 2 }`.
   When `typeof module !== "undefined"`, set `module.exports = { RECIPES, LIMITS }` and return
   before touching any browser API, so Node can load the file.
-- [ ] T005 Create `tests/sound.test.js` (`node:test`, `node:assert/strict`). It requires
+- [x] T005 Create `tests/sound.test.js` (`node:test`, `node:assert/strict`). It requires
   `assets/sound/sound.js` and checks:
   - the recipe names are exactly `tap`, `correct`, `try-again`, `round`, and `series`;
   - every `wave` is `sine` or `triangle`;
@@ -74,7 +74,7 @@ on/off control.
     among themselves.
 
   Depends on T004.
-- [ ] T006 Extend `assets/sound/sound.js` with the browser player, per contracts/sound-api.md and
+- [x] T006 Extend `assets/sound/sound.js` with the browser player, per contracts/sound-api.md and
   research R3–R5:
   - **State:** `on = true` on load (FR-008), kept in memory only and never stored (FR-009).
   - **Unlock:** a one-time capture listener for `pointerdown` and `keydown` creates the
