@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Синоними</title>
+  <link rel="stylesheet" href="../../assets/home/home.css">
+  <link rel="stylesheet" href="game.css">
+  <script defer src="words.js"></script>
+  <script defer src="logic.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body>
+  <a class="home-control" href="../../" aria-label="Начало"><img src="../../assets/home/home.svg" alt=""></a>
+  <!-- Games MUST NOT cover the top-left 80x80 px area (home control). -->
+  <main>
+    <section id="round">
+      <p id="progress" class="progress"></p>
+      <h1 id="reference" class="reference"></h1>
+      <p id="instruction" class="instruction"></p>
+      <div id="candidates" class="candidates"></div>
+      <p id="feedback" class="feedback" aria-live="polite"></p>
+      <button id="action" class="action" type="button"></button>
+    </section>
+    <section id="summary" class="summary" hidden>
+      <p id="summary-text" class="summary-text"></p>
+      <p id="summary-stars" class="summary-stars" aria-hidden="true"></p>
+      <button id="again" class="action" type="button"></button>
+    </section>
+    <noscript><p class="noscript">Играта изисква JavaScript. Моля, включи го в браузъра.</p></noscript>
+  </main>
+</body>
+</html>

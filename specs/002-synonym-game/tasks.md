@@ -28,7 +28,7 @@ manually per quickstart.md.
 
 ## Phase 1: Setup
 
-- [ ] T001 Create `games/synonyms/index.html` from `games/_template/index.html`:
+- [x] T001 Create `games/synonyms/index.html` from `games/_template/index.html`:
   - keep the home control and its stylesheet link exactly (`../../assets/home/home.css`,
     `href="../../"`);
   - set `<title>Синоними</title>`;
@@ -38,7 +38,7 @@ manually per quickstart.md.
   - load `words.js`, `logic.js`, and `game.js` as classic `<script defer>` in that order;
   - add a Bulgarian `<noscript>` message;
   - keep the content clear of the top-left 80×80 px area.
-- [ ] T002 [P] Create `games/synonyms/game.css` base:
+- [x] T002 [P] Create `games/synonyms/game.css` base:
   - its own color tokens on `:root`, with an explicit `body` background, matching the portal's
     warm palette (no import of portal CSS, Principle V);
   - the system font stack;
@@ -56,7 +56,7 @@ manually per quickstart.md.
 
 **Purpose**: the rules core and the content that all stories use.
 
-- [ ] T003 [P] Create `games/synonyms/logic.js` (pure, no DOM), exposing
+- [x] T003 [P] Create `games/synonyms/logic.js` (pure, no DOM), exposing
   `globalThis.SynonymLogic`, and `module.exports` when `typeof module !== "undefined"`. Implement:
   - `normalize(w)`: trim and lowercase.
   - `validateSet(set)`: returns `null` or an English reason. It enforces data-model.md verbatim:
@@ -70,14 +70,14 @@ manually per quickstart.md.
   - `validateBank(sets)`: returns a list of problems, including duplicate reference words
     ("unique across the bank").
   - `shuffle(list, rng = Math.random)`: a Fisher–Yates shuffle that returns a new array (R4).
-- [ ] T004 [P] Create `games/synonyms/words.js` with `globalThis.SYNONYM_SETS = [...]`:
+- [x] T004 [P] Create `games/synonyms/words.js` with `globalThis.SYNONYM_SETS = [...]`:
   - **at least 20** word sets for grades 2–4 (R10, SC-006);
   - each set has 2–4 synonyms and 6–8 distractors (8–12 candidates in total);
   - at least 2 "thinking" distractors per set (an opposite or a same-topic word);
   - common, correctly spelled standard Bulgarian;
   - a header comment (English) that points to `specs/002-synonym-game/contracts/word-set.md`
     and says "DRAFT: awaiting owner approval (T020)".
-- [ ] T005 Create `tests/synonyms.test.js` using `node:test` and `node:assert/strict`:
+- [x] T005 Create `tests/synonyms.test.js` using `node:test` and `node:assert/strict`:
   - load `games/synonyms/logic.js` with `require`, and load `games/synonyms/words.js` with
     `require`, which sets `globalThis.SYNONYM_SETS`;
   - test `validateSet` against a valid set and against one broken set per rule;
