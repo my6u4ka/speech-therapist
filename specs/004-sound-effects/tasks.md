@@ -165,7 +165,7 @@ nothing stored.
 
 ## Phase 5: Polish & Cross-Cutting Concerns
 
-- [ ] T013 [P] Add a note under the constraints in `specs/002-synonym-game/plan.md` and
+- [x] T013 [P] Add a note under the constraints in `specs/002-synonym-game/plan.md` and
   `specs/003-antonym-pairs/plan.md`: "Sound: superseded by feature 004 (sound effects); sad or
   punishing sounds remain forbidden." Add the same note after FR-006 in
   `specs/002-synonym-game/spec.md` and `specs/003-antonym-pairs/spec.md`.

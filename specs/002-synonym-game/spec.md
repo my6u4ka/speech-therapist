@@ -119,6 +119,7 @@ game.
   round's final check, it MUST also show every missed synonym. Unmarked distractors stay neutral.
 - **FR-006**: All feedback MUST be positive and encouraging. There MUST be no penalty, lost
   points, sad sounds, or time limit (constitution I).
+  *Note*: Sound: superseded by feature 004 (sound effects); sad or punishing sounds remain forbidden.
 - **FR-007**: After a first check with mistakes (a wrong mark or a missed synonym), the child MUST
   get one more try. Correct marks stay fixed, and wrong marks are cleared so they can be
   reconsidered. The second check ends the round. A first check with no mistakes also ends the

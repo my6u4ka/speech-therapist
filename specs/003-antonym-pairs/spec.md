@@ -120,6 +120,7 @@ the game.
   with its own matching mark (color plus a number or symbol).
 - **FR-007**: All feedback MUST be positive and encouraging. There MUST be no penalty, lost points,
   sad sounds, or time limit (constitution I).
+  *Note*: Sound: superseded by feature 004 (sound effects); sad or punishing sounds remain forbidden.
 - **FR-008**: A series MUST consist of 5 rounds with no pair repeated, picked at random from the
   word bank. It ends with a summary that offers "Играй пак" and the home control.
 - **FR-009**: The summary MUST praise the child and SHOULD reflect how many pairs were made right

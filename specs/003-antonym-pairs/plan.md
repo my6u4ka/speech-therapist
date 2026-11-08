@@ -41,6 +41,8 @@ opposites. No code is shared with the synonym game (research R1).
 **Constraints**: no build step, no external requests, no storage or sound, relative URLs, and a clear
 top-left 80×80 px area
 
+**Note**: Sound: superseded by feature 004 (sound effects); sad or punishing sounds remain forbidden.
+
 **Scale/Scope**: one game, at least 40 pairs at first (SC-006)
 
 ## Constitution Check
