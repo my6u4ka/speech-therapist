@@ -10,6 +10,4 @@
 // - href: optional; defaults to games/<id>/; must point inside this site, with no http://,
 //   https://, or //.
 // - The order in the file is the order of tiles.
-window.GAMES = [
-  { id: "test-game", name: "Проба", image: "games/_template/cover.svg", href: "games/_template/" }
-];
+window.GAMES = [];

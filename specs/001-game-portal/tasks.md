@@ -152,9 +152,17 @@ home control returns to the portal.
   Firefox or Safari) at 360 px, tablet landscape, and desktop widths. Record any failure and fix
   it before continuing. Scenario 9 needs the published site and is checked after the first
   release.
-- [ ] T015 Remove the temporary `test-game` entry from `games.js`, leaving `window.GAMES = [];`
+  - 2026-11-08, Chromium (desktop app browser) on a local server that imitates Pages under
+    `/speech-therapist/`, at 360 px, 1024 px, and desktop widths. Scenarios 1, 2, 4–13 pass,
+    including 9 via the local 404 imitation. Fixed while checking: the template's heading sat
+    under the home control (body padding added), and the no-picture name split words
+    mid-letter (`overflow-wrap: break-word`). Scenario 12 was not throttled; the page weighs
+    under 10 KB.
+  - **Still open (owner):** a second browser (Firefox or Safari, ideally on a real phone or
+    tablet) and scenario 3 (a grade-1 child recognizes a game by its picture).
+- [x] T015 Remove the temporary `test-game` entry from `games.js`, leaving `window.GAMES = [];`
   (spec: no "coming soon" tiles; quickstart: test data must not be merged)
-- [ ] T016 [P] Create `README.md` (in English): what the project is, the live URL
+- [x] T016 [P] Create `README.md` (in English): what the project is, the live URL
   `https://my6u4ka.github.io/speech-therapist/`, how to open it locally (double-click
   `index.html`), how to add a game (link to `specs/001-game-portal/contracts/game-entry.md`), and
   the git flow and Spec Kit workflow (link to `.specify/memory/constitution.md`)

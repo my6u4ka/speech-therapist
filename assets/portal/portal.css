@@ -71,12 +71,12 @@ body {
   font-size: 1.4rem;
   font-weight: 700;
   text-align: center;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word; /* break inside a word only if it cannot fit on its own line */
 }
 
-/* Picture failed to load: show the name alone, larger. */
+/* Picture failed to load: show the name alone, a little larger. */
 .tile--no-image { justify-content: center; min-height: 140px; }
-.tile--no-image .tile-name { font-size: 1.8rem; }
+.tile--no-image .tile-name { font-size: 1.5rem; }
 
 noscript p {
   margin: var(--gutter);
