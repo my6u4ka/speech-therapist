@@ -28,7 +28,7 @@ on its own.
 
 **Purpose**: prepare the repository to be served as a static site.
 
-- [ ] T001 Create an empty `.nojekyll` file at the repository root, so GitHub Pages serves files
+- [x] T001 Create an empty `.nojekyll` file at the repository root, so GitHub Pages serves files
   as-is and does not hide `games/_template/` (research R8)
 
 ---
@@ -37,13 +37,13 @@ on its own.
 
 **Purpose**: a game page that tiles can open, needed to check both stories.
 
-- [ ] T002 [P] Create `games/_template/index.html`: a minimal game page with
+- [x] T002 [P] Create `games/_template/index.html`: a minimal game page with
   `<html lang="bg">`, `<meta charset="utf-8">`,
   `<meta name="viewport" content="width=device-width, initial-scale=1">`, the title
   `Шаблон за игра`, a heading `Шаблон за игра`, and an HTML comment (in English) explaining that
   new games start by copying this folder to `games/<id>/` (contract game-entry.md, "Adding a
   game")
-- [ ] T003 [P] Create `games/_template/cover.svg`: a square (viewBox 0 0 512 512), simple,
+- [x] T003 [P] Create `games/_template/cover.svg`: a square (viewBox 0 0 512 512), simple,
   friendly placeholder picture, "at most 100 KB" (research R9), with no text inside the picture
 
 **Checkpoint**: there is a page to open; the user stories can start.
