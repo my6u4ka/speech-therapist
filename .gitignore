@@ -1,0 +1,6 @@
+# Personal Claude Code settings (may contain local permissions or tokens)
+.claude/settings.local.json
+
+# OS clutter
+Thumbs.db
+.DS_Store
