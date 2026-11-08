@@ -123,20 +123,20 @@ and check that the portal opens (quickstart scenarios 5, 6, 9).
 
 ### Implementation for User Story 2
 
-- [ ] T010 [P] [US2] Create `assets/home/home.svg`: a simple, bold house icon in a square viewBox,
+- [x] T010 [P] [US2] Create `assets/home/home.svg`: a simple, bold house icon in a square viewBox,
   readable at 40 px, using `currentColor` or a high-contrast fill
-- [ ] T011 [P] [US2] Create `assets/home/home.css` per contract home-control.md:
+- [x] T011 [P] [US2] Create `assets/home/home.css` per contract home-control.md:
   - `.home-control` fixed at the top-left, above the game content (high `z-index`);
   - a tap area of at least 64×64 px, the icon centered, a high-contrast background, and rounded
     corners;
   - a visible `:focus-visible` outline;
   - stays visible while the page scrolls.
-- [ ] T012 [US2] Add the home control to `games/_template/index.html` exactly as in contract
+- [x] T012 [US2] Add the home control to `games/_template/index.html` exactly as in contract
   home-control.md: `<link rel="stylesheet" href="../../assets/home/home.css">` and
   `<a class="home-control" href="../../" aria-label="Начало"><img src="../../assets/home/home.svg" alt=""></a>`
   as the first element in `<body>`. Add an HTML comment saying that games MUST NOT cover the
   top-left 80×80 px area.
-- [ ] T013 [US2] Add the home control to `404.html` with absolute paths:
+- [x] T013 [US2] Add the home control to `404.html` with absolute paths:
   `<link rel="stylesheet" href="/speech-therapist/assets/home/home.css">` and
   `<a class="home-control" href="/speech-therapist/" aria-label="Начало">` with
   `/speech-therapist/assets/home/home.svg` (contract home-control.md)
