@@ -30,7 +30,7 @@ using its built-in `node:test` and `node:assert`, with no npm packages and no `p
 series state lives only in memory (FR-015).
 
 **Testing**:
-- unit tests for `logic.js` and a structural check of the whole word bank, with `node --test tests/`;
+- unit tests for `logic.js` and a structural check of the whole word bank, with `node --test`;
 - manual acceptance checks per [quickstart.md](quickstart.md) at 360 px and desktop widths.
 
 **Target Platform**: same as feature 001 (GitHub Pages, current evergreen browsers, touch and

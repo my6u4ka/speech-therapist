@@ -13,7 +13,7 @@ How to run the game and prove it meets the [spec](spec.md). Formats and rules ar
 ## Automated checks
 
 ```bash
-node --test tests/
+node --test
 ```
 
 Expected: every test passes, covering the logic rules, the structural check of each word set, and

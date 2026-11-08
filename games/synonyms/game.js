@@ -9,7 +9,6 @@
     check: "Провери",
     next: "Напред",
     retry: "Опитай пак!",
-    wrongOnly: "Почти! Някои думи не са с близко значение. Опитай пак!",
     perfect: "Браво! Намери всички!",
     revealed: "Ето всички думи с близко значение.",
     missedTag: "и тази",
@@ -145,7 +144,8 @@
     applyStatuses(res.statuses);
 
     if (res.done) {
-      var perfect = round.attempt === 1;
+      var perfect = res.missingCount === 0 && res.found === round.set.synonyms.length &&
+        !Object.keys(res.statuses).some(function (w) { return res.statuses[w] === "wrong"; });
       els.feedback.textContent = perfect ? TEXT.perfect : TEXT.revealed;
       if (perfect) els.reference.classList.add("celebrate");
       finishRound(res);
@@ -163,7 +163,15 @@
           setBtnState(word, "");
         }
       });
-      els.feedback.textContent = res.missingCount > 0 ? L.missingText(res.missingCount) : TEXT.wrongOnly;
+      if (res.missingCount === 0) {
+        // All synonyms already found; only wrong marks were cleared. Nothing is left to
+        // find, so a second try would force another wrong mark: end the round here. Not
+        // celebrated as perfect, so marking every word is not rewarded.
+        els.feedback.textContent = TEXT.revealed;
+        finishRound(res);
+        return;
+      }
+      els.feedback.textContent = L.missingText(res.missingCount);
       round.attempt = 2;
       round.state = "selecting";
       updateAction();

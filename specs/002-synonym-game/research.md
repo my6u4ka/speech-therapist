@@ -29,7 +29,7 @@ alternatives considered.
 ## R3. Tests
 
 - **Decision**: `tests/synonyms.test.js` uses `node:test` and `node:assert`, and runs with
-  `node --test tests/`. It covers:
+  `node --test`. It covers:
   - `checkRound` for both checks, and `instructionText` for 1 and several words;
   - `pickSeries`, which must give no repeats and stay short when the bank is small;
   - `shuffle`, which must keep every word;

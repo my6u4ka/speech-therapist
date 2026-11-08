@@ -11,7 +11,7 @@ description: "Task list for the Synonym Game feature"
 [data-model.md](data-model.md), [contracts/](contracts/), [quickstart.md](quickstart.md)
 
 **Tests**: included. The plan (research R3) chose unit tests for `logic.js` and a structural check
-of the word bank, run with `node --test tests/` (Node built-ins only, no npm). The UI is checked
+of the word bank, run with `node --test` (Node built-ins only, no npm). The UI is checked
 manually per quickstart.md.
 
 **Organization**: tasks are grouped by user story.
@@ -87,7 +87,7 @@ manually per quickstart.md.
 
   Depends on T003 and T004.
 
-**Checkpoint**: `node --test tests/` passes.
+**Checkpoint**: `node --test` passes.
 
 ---
 
@@ -192,12 +192,28 @@ manually per quickstart.md.
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T017 Run `node --test tests/` and confirm that every test passes.
-- [ ] T018 Run quickstart.md scenarios 1–15 on the local preview server (`/speech-therapist/`) at
+- [x] T017 Run `node --test` and confirm that every test passes. (2026-11-08: 17/17 pass.
+  `node --test tests/` does not work on Node 24, so the docs now say `node --test`.)
+- [x] T018 Run quickstart.md scenarios 1–15 on the local preview server (`/speech-therapist/`) at
   360 px and desktop widths. Record the results under this task and fix any failure. A second
   browser and a real phone are the owner's check.
-- [ ] T019 [P] Update `README.md`: list the synonym game, and add a "Tests" section with
-  `node --test tests/` and a note that Node is needed only for tests.
+  - 2026-11-08, Chromium on the local preview server, at 360 px and desktop widths. Scenarios
+    1, 2, 4–15 pass:
+    - a full series with 5 distinct words and the summary "Браво! Намери 9 от 11 думи." ⭐⭐⭐;
+    - "Играй пак" restarts the series;
+    - the home control works mid-round;
+    - there is no storage and there are no requests outside the site.
+  - Scenario 3 (grayscale) was not emulated. The marked state is ✓ plus a thick border.
+  - Fixed during review:
+    - (a) a first check with every synonym found plus a wrong mark left the child stuck: the
+      second try could only be started by marking another wrong word. Such a round now ends
+      with "Ето всички думи с близко значение." and no celebration, so marking every word is
+      not rewarded. Contract round-flow.md was updated.
+    - (b) a fully correct second try now celebrates too.
+    - (c) word bank: "чествие" is not a standard word and was replaced with "празненство";
+      the bookish "интелигентен" was replaced with "схватлив".
+- [x] T019 [P] Update `README.md`: list the synonym game, and add a "Tests" section with
+  `node --test` and a note that Node is needed only for tests.
 - [ ] T020 **Owner**: review and correct every set in `games/synonyms/words.js` (quickstart scenario
   16, FR-011), then remove the "DRAFT" note from its header. This is required before the
   release.

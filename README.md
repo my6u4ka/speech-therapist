@@ -17,9 +17,24 @@ passive and active vocabulary. The games and their content are in Bulgarian.
 The site is plain HTML, CSS, and JavaScript. It has no build step, no server, no external
 requests, and stores no data about the child.
 
+## Games
+
+| Game | Folder | For | What the child does |
+|---|---|---|---|
+| Синоними | `games/synonyms/` | grades 2–4 | Marks every word that means nearly the same as the reference word; 5 rounds per series. Word bank: `games/synonyms/words.js`. |
+
 ## Run locally
 
 Open `index.html` in a browser. No server or build step is needed.
+
+## Tests
+
+```bash
+node --test
+```
+
+This runs the unit tests in `tests/` (game rules and word-bank structure), using only Node's built-in
+test runner. Node.js 18 or newer is needed for the tests only, never for the site.
 
 `404.html` uses absolute `/speech-therapist/` paths, so it only works on the published site.
 

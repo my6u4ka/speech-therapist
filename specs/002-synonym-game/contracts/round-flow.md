@@ -22,8 +22,13 @@ Output: `{ statuses, missingCount, done, found }`.
 ```text
 selecting(attempt 1) --Провери--> checked
   checked, done  -> show result (celebrate if perfect) -> "Напред"
-  checked, !done -> lock correct; clear wrong after ~1 s; show missing line -> selecting(attempt 2)
+  checked, !done, missingCount > 0 -> lock correct; clear wrong after ~1 s; show missing line
+                                      -> selecting(attempt 2)
+  checked, !done, missingCount = 0 -> (all synonyms found, only wrong marks) lock correct;
+                                      clear wrong after ~1 s; "Ето всички думи с близко
+                                      значение." (no celebration) -> "Напред"
 selecting(attempt 2) --Провери--> done: show correct / wrong / missed -> "Напред"
+                                  (celebrate if every synonym is marked and nothing is wrong)
 last round "Напред" -> summary -> "Играй пак" (new series) or home control
 ```
 
@@ -40,9 +45,8 @@ last round "Напред" -> summary -> "Играй пак" (new series) or home
 | Check button | Провери |
 | After check 1, mistakes, 1 missing | Почти! Остава още 1 дума. |
 | After check 1, mistakes, n ≥ 2 missing | Почти! Остават още {n} думи. |
-| After check 1, wrong marks only, none missing | Почти! Някои думи не са с близко значение. Опитай пак! |
-| Perfect round | Браво! Намери всички! |
-| Round ends after check 2 | Ето всички думи с близко значение. |
+| Perfect round (every synonym marked, nothing wrong) | Браво! Намери всички! |
+| Round ends after check 2, or after check 1 with only wrong marks | Ето всички думи с близко значение. |
 | Next button | Напред |
 | Summary | Браво! Намери {found} от {total} думи. |
 | Play again | Играй пак |
