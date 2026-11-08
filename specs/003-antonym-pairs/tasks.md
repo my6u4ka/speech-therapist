@@ -58,7 +58,7 @@ with `node --test` (Node built-ins only). The UI is checked manually per quickst
 
 ## Phase 2: Foundational (Blocking Prerequisites)
 
-- [ ] T003 [P] Create `games/antonyms/logic.js` (pure, no DOM). It exposes `globalThis.AntonymLogic`,
+- [x] T003 [P] Create `games/antonyms/logic.js` (pure, no DOM). It exposes `globalThis.AntonymLogic`,
   and also `module.exports` under Node. Implement:
   - `normalize(w)`.
   - `validatePair(p)`, which returns `null` or an English reason, enforcing data-model.md
@@ -71,7 +71,7 @@ with `node --test` (Node built-ins only). The UI is checked manually per quickst
   - `conflicts(p, q)` per research R3: they share a normalized word, or a word of one is in the
     other's `avoid`, in either direction.
   - `shuffle(list, rng = Math.random)`: Fisher–Yates; returns a new array.
-- [ ] T004 [P] Create `games/antonyms/words.js` with `globalThis.ANTONYM_PAIRS = [...]`:
+- [x] T004 [P] Create `games/antonyms/words.js` with `globalThis.ANTONYM_PAIRS = [...]`:
   - **at least 40** pairs for grades 2–4 (R9, SC-006), mixing adjectives, verbs, nouns, and
     adverbs;
   - common, correctly spelled standard Bulgarian;
@@ -79,7 +79,7 @@ with `node --test` (Node built-ins only). The UI is checked manually per quickst
   - a header comment (English) that points to `specs/003-antonym-pairs/contracts/antonym-pair.md`
     and says "DRAFT: awaiting owner approval (T020)";
   - only clear, everyday opposites. When in doubt, leave a pair out.
-- [ ] T005 Create `tests/antonyms.test.js` with `node:test` and `node:assert/strict`. It requires
+- [x] T005 Create `tests/antonyms.test.js` with `node:test` and `node:assert/strict`. It requires
   `games/antonyms/logic.js` and `games/antonyms/words.js` and tests:
   - `validatePair` against a valid pair and against one broken pair per rule;
   - `validateBank` detecting a reversed duplicate;
