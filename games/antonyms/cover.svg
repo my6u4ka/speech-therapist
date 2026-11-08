@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <clipPath id="left"><rect x="0" y="0" width="256" height="512"/></clipPath>
+    <clipPath id="right"><rect x="256" y="0" width="256" height="512"/></clipPath>
+  </defs>
+  <rect width="512" height="512" fill="#fff8e7"/>
+  <!-- Day half -->
+  <g clip-path="url(#left)">
+    <rect width="512" height="512" fill="#bfe3ff"/>
+    <circle cx="150" cy="256" r="78" fill="#ffc933"/>
+    <g stroke="#ffc933" stroke-width="14" stroke-linecap="round">
+      <line x1="150" y1="130" x2="150" y2="156"/>
+      <line x1="150" y1="356" x2="150" y2="382"/>
+      <line x1="24" y1="256" x2="50" y2="256"/>
+      <line x1="61" y1="167" x2="79" y2="185"/>
+      <line x1="61" y1="345" x2="79" y2="327"/>
+      <line x1="239" y1="167" x2="221" y2="185"/>
+    </g>
+  </g>
+  <!-- Night half -->
+  <g clip-path="url(#right)">
+    <rect width="512" height="512" fill="#1f2a5c"/>
+    <path d="M 360 170 A 92 92 0 1 0 400 330 A 74 74 0 1 1 360 170 Z" fill="#fff3b0"/>
+    <circle cx="440" cy="130" r="9" fill="#fff3b0"/>
+    <circle cx="470" cy="220" r="7" fill="#fff3b0"/>
+    <circle cx="300" cy="110" r="7" fill="#fff3b0"/>
+    <circle cx="455" cy="380" r="8" fill="#fff3b0"/>
+  </g>
+  <!-- Join in the middle -->
+  <rect x="244" y="0" width="24" height="512" fill="#2b4a8b"/>
+  <circle cx="256" cy="256" r="40" fill="#ffffff" stroke="#2b4a8b" stroke-width="10"/>
+  <path d="M 238 256 H 274 M 262 242 L 276 256 L 262 270" fill="none" stroke="#2b4a8b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

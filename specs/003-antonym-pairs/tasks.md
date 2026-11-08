@@ -143,7 +143,7 @@ with `node --test` (Node built-ins only). The UI is checked manually per quickst
 
 **Independent Test**: quickstart scenarios 11–14.
 
-- [ ] T011 [US2] Add tests to `tests/antonyms.test.js` for:
+- [x] T011 [US2] Add tests to `tests/antonyms.test.js` for:
   - `buildSeries(pairs, 5, 5, rng)`:
     - with the real bank and a fixed seeded rng: 5 rounds of 5;
     - no pair repeats across the series;
@@ -151,10 +151,10 @@ with `node --test` (Node built-ins only). The UI is checked manually per quickst
     - a small bank (e.g. 7 pairs) gives a shorter series and never throws;
   - `starsFor(found, total)`: returns 1–3 and never 0;
   - `summaryLine2(x, y)`: returns "От първия опит: x от y.".
-- [ ] T012 [US2] Implement `buildSeries` (research R4: greedy fill with up to 20 reshuffles, keeping
+- [x] T012 [US2] Implement `buildSeries` (research R4: greedy fill with up to 20 reshuffles, keeping
   the best result), `starsFor` (3 stars at 80% or more, 2 at 50% or more, otherwise 1; 1 if
   `total` is 0), and `summaryLine2` in `games/antonyms/logic.js`, so that the T011 tests pass.
-- [ ] T013 [US2] In `games/antonyms/game.js`, replace the temporary round building with a series:
+- [x] T013 [US2] In `games/antonyms/game.js`, replace the temporary round building with a series:
   - on load, call `buildSeries(validPairs, 5, 5)`;
   - show the progress "n / 5";
   - "Напред" goes to the next round, and after the last round it shows `#summary`;
@@ -162,7 +162,7 @@ with `node --test` (Node built-ins only). The UI is checked manually per quickst
     `starsFor` stars;
   - "Играй пак" starts a new series;
   - nothing is stored (FR-015).
-- [ ] T014 [P] [US2] Make sure the summary and progress styles in `games/antonyms/game.css` match
+- [x] T014 [P] [US2] Make sure the summary and progress styles in `games/antonyms/game.css` match
   the synonym game.
 
 **Checkpoint**: a full series plays through and restarts.
@@ -171,10 +171,10 @@ with `node --test` (Node built-ins only). The UI is checked manually per quickst
 
 ## Phase 5: User Story 3 - The game is on the portal (Priority: P3)
 
-- [ ] T015 [P] [US3] Create `games/antonyms/cover.svg`: square (viewBox 0 0 512 512), "at most
+- [x] T015 [P] [US3] Create `games/antonyms/cover.svg`: square (viewBox 0 0 512 512), "at most
   100 KB", friendly, with no text. It should suggest opposites, e.g. a sun and a moon, or an up
   arrow and a down arrow, joined in the middle.
-- [ ] T016 [US3] Add `{ id: "antonyms", name: "Антоними", image: "games/antonyms/cover.svg" }` to
+- [x] T016 [US3] Add `{ id: "antonyms", name: "Антоними", image: "games/antonyms/cover.svg" }` to
   `window.GAMES` in `games.js`, after the "synonyms" entry.
 
 ---
