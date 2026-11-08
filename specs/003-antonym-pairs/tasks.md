@@ -101,7 +101,7 @@ with `node --test` (Node built-ins only). The UI is checked manually per quickst
 
 ### Tests for User Story 1
 
-- [ ] T006 [US1] Add tests to `tests/antonyms.test.js` for:
+- [x] T006 [US1] Add tests to `tests/antonyms.test.js` for:
   - `buildColumns(roundPairs, rng)`: two columns of equal length; every word appears exactly once;
     each item carries its `pairIndex`; each pair has exactly one word on each side;
   - `isPair(itemX, itemY)`: true only for the same `pairIndex` from opposite columns;
@@ -110,9 +110,9 @@ with `node --test` (Node built-ins only). The UI is checked manually per quickst
 
 ### Implementation for User Story 1
 
-- [ ] T007 [US1] Implement `buildColumns`, `isPair`, and `firstTryCount` in
+- [x] T007 [US1] Implement `buildColumns`, `isPair`, and `firstTryCount` in
   `games/antonyms/logic.js` per research R5 and data-model.md, so that the T006 tests pass.
-- [ ] T008 [US1] Create `games/antonyms/game.js`, part 1:
+- [x] T008 [US1] Create `games/antonyms/game.js`, part 1:
   - take the valid pairs (skip invalid ones with `console.warn`);
   - build one round from 5 conflict-free pairs (temporary: shuffle the bank and take pairs
     greedily with `conflicts`; US2 replaces this with `buildSeries`);
@@ -120,7 +120,7 @@ with `node --test` (Node built-ins only). The UI is checked manually per quickst
     using `textContent` only;
   - implement selection per contracts/round-flow.md "Flow": select, tap again to unselect, tap
     in the same column to move the selection.
-- [ ] T009 [US1] In `games/antonyms/game.js`, implement pairing:
+- [x] T009 [US1] In `games/antonyms/game.js`, implement pairing:
   - tapping in the other column calls `isPair`;
   - **correct**: both words lock as `matched pair-n` with the badge "✓ n" (n = the next number,
     1–5), and the feedback line says "Да!";
@@ -129,7 +129,7 @@ with `node --test` (Node built-ins only). The UI is checked manually per quickst
   - tapping a matched word does nothing;
   - when all 5 are matched, show "Браво! Всички двойки са свързани!", add a celebrate animation,
     and show `#action` "Напред" (in this story, it starts another round).
-- [ ] T010 [P] [US1] Check `games/antonyms/game.css` against every state in contracts/round-flow.md
+- [x] T010 [P] [US1] Check `games/antonyms/game.css` against every state in contracts/round-flow.md
   "Word button states", and add anything missing, e.g. the badge position or the celebrate
   keyframes.
 

@@ -86,12 +86,44 @@
     return a;
   }
 
+  // Builds the two columns of a round (research R5). A coin flip per pair decides which word
+  // goes left; then each column is shuffled on its own. Items: { word, pairIndex, side }.
+  function buildColumns(roundPairs, rng) {
+    rng = rng || Math.random;
+    var left = [];
+    var right = [];
+    roundPairs.forEach(function (p, i) {
+      var flip = rng() < 0.5;
+      left.push({ word: flip ? p.a : p.b, pairIndex: i, side: "left" });
+      right.push({ word: flip ? p.b : p.a, pairIndex: i, side: "right" });
+    });
+    return { left: shuffle(left, rng), right: shuffle(right, rng) };
+  }
+
+  // True only for the same pair, taken from opposite columns.
+  function isPair(x, y) {
+    return x.pairIndex === y.pairIndex && x.side !== y.side;
+  }
+
+  // Counts the pairs where neither word was part of a wrong pairing (FR-009).
+  // triedWrong is a Set or an array of words.
+  function firstTryCount(roundPairs, triedWrong) {
+    var tried = {};
+    Array.from(triedWrong).forEach(function (w) { tried[normalize(w)] = true; });
+    return roundPairs.filter(function (p) {
+      return !tried[normalize(p.a)] && !tried[normalize(p.b)];
+    }).length;
+  }
+
   var api = {
     normalize: normalize,
     validatePair: validatePair,
     validateBank: validateBank,
     conflicts: conflicts,
-    shuffle: shuffle
+    shuffle: shuffle,
+    buildColumns: buildColumns,
+    isPair: isPair,
+    firstTryCount: firstTryCount
   };
 
   globalThis.AntonymLogic = api;

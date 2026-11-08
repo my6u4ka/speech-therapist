@@ -68,3 +68,64 @@ test("shuffle keeps every item and does not mutate its input", () => {
 test("the real word bank has no problems", () => {
   assert.deepEqual(L.validateBank(BANK), []);
 });
+
+// --- Round columns (US1) ---
+
+const ROUND = [
+  { a: "ден", b: "нощ" },
+  { a: "горещ", b: "студен" },
+  { a: "голям", b: "малък" },
+  { a: "отварям", b: "затварям" },
+  { a: "рано", b: "късно" }
+];
+
+test("buildColumns makes two equal columns with every word exactly once", () => {
+  for (let i = 0; i < 20; i++) {
+    const { left, right } = L.buildColumns(ROUND);
+    assert.equal(left.length, 5);
+    assert.equal(right.length, 5);
+    const words = left.concat(right).map((it) => it.word).sort();
+    const expected = ROUND.flatMap((p) => [p.a, p.b]).sort();
+    assert.deepEqual(words, expected);
+    for (let idx = 0; idx < ROUND.length; idx++) {
+      const l = left.filter((it) => it.pairIndex === idx);
+      const r = right.filter((it) => it.pairIndex === idx);
+      assert.equal(l.length, 1);
+      assert.equal(r.length, 1);
+      assert.deepEqual([l[0].word, r[0].word].sort(), [ROUND[idx].a, ROUND[idx].b].sort());
+    }
+  }
+});
+
+test("buildColumns uses the given rng and does not mutate the round", () => {
+  const copy = JSON.stringify(ROUND);
+  let n = 0;
+  const rng = () => ((n++ * 0.37) % 1);
+  const x = L.buildColumns(ROUND, rng);
+  n = 0;
+  const y = L.buildColumns(ROUND, rng);
+  assert.deepEqual(x, y);
+  assert.equal(JSON.stringify(ROUND), copy);
+});
+
+test("isPair is true only for the same pairIndex from opposite columns", () => {
+  const { left, right } = L.buildColumns(ROUND);
+  for (const x of left) {
+    for (const y of right) {
+      assert.equal(L.isPair(x, y), x.pairIndex === y.pairIndex);
+      assert.equal(L.isPair(y, x), x.pairIndex === y.pairIndex);
+    }
+  }
+  // Same column never pairs, even with the same pairIndex or the same item.
+  assert.equal(L.isPair(left[0], left[0]), false);
+  assert.equal(L.isPair(left[0], left[1]), false);
+  assert.equal(L.isPair(right[0], right[1]), false);
+});
+
+test("firstTryCount counts pairs where neither word was tried wrong", () => {
+  assert.equal(L.firstTryCount(ROUND, new Set()), 5);
+  assert.equal(L.firstTryCount(ROUND, new Set(["ден"])), 4);
+  assert.equal(L.firstTryCount(ROUND, new Set(["ден", "нощ"])), 4);
+  assert.equal(L.firstTryCount(ROUND, new Set(["ден", "студен", "малък"])), 2);
+  assert.equal(L.firstTryCount(ROUND, ["ден", "горещ"]), 3);
+});
