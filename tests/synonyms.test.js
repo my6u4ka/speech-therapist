@@ -163,3 +163,25 @@ test("starsFor returns 1-3 and never 0", () => {
   assert.equal(L.starsFor(0, 0), 1);
   assert.equal(L.starsFor(10, 10), 3);
 });
+
+// --- checkSound (T007) ---
+
+test("checkSound: a finished round plays round", () => {
+  const r = L.checkRound(roundSet(), ["огромен", "едър", "грамаден"], 1);
+  assert.equal(r.done, true);
+  assert.equal(L.checkSound(r, true), "round");
+  const last = L.checkRound(roundSet(), ["огромен", "малък"], 2);
+  assert.equal(L.checkSound(last, false), "round");
+});
+
+test("checkSound: a wrong mark before the end plays try-again", () => {
+  const r = L.checkRound(roundSet(), ["огромен", "малък"], 1);
+  assert.equal(r.done, false);
+  assert.equal(L.checkSound(r, false), "try-again");
+});
+
+test("checkSound: only correct marks, some missing, plays correct", () => {
+  const r = L.checkRound(roundSet(), ["огромен"], 1);
+  assert.equal(r.done, false);
+  assert.equal(L.checkSound(r, false), "correct");
+});

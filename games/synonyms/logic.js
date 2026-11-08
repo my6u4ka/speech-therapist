@@ -126,6 +126,16 @@
     return 1;
   }
 
+  // Which sound to play after a check: "round" when the round ended, "try-again" when a mark
+  // is wrong, otherwise "correct". perfect is accepted for future use and ignored.
+  function checkSound(result, perfect) {
+    if (result.done) return "round";
+    var hasWrong = Object.keys(result.statuses).some(function (w) {
+      return result.statuses[w] === "wrong";
+    });
+    return hasWrong ? "try-again" : "correct";
+  }
+
   var api = {
     normalize: normalize,
     validateSet: validateSet,
@@ -135,7 +145,8 @@
     instructionText: instructionText,
     missingText: missingText,
     pickSeries: pickSeries,
-    starsFor: starsFor
+    starsFor: starsFor,
+    checkSound: checkSound
   };
 
   globalThis.SynonymLogic = api;

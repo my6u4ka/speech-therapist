@@ -44,6 +44,7 @@ together, excluding the cover, stay under 40 KB.
 **Constraints**:
 - no build step and no external requests;
 - no `localStorage`, cookies, or sound;
+  Note: Sound: superseded by feature 004 (sound effects); sad or punishing sounds remain forbidden.
 - relative URLs only;
 - the top-left 80×80 px area stays clear for the home control (contract 001 home-control.md).
 

@@ -36,10 +36,9 @@ main { max-width: 900px; margin: 0 auto; }
 [hidden] { display: none !important; }
 
 .progress {
-  position: absolute;
-  top: 24px;
-  right: 16px;
-  margin: 0;
+  position: static;
+  margin: 0 0 8px;
+  text-align: center;
   font-size: 1.1rem;
   font-weight: bold;
 }
