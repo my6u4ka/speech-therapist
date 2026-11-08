@@ -1,0 +1,85 @@
+/* Portal layout and tiles. System fonts only: no downloads, no third parties. */
+:root {
+  --bg: #fff8e7;
+  --text: #1f1a14;
+  --tile-bg: #ffffff;
+  --tile-border: #2b4a8b;
+  --accent: #1d4ed8;
+  --focus: #b91c1c;
+  --gutter: 16px;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.portal-title {
+  margin: 0;
+  padding: var(--gutter);
+  font-size: 2rem;
+  text-align: center;
+}
+
+#games {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--gutter);
+  padding: var(--gutter);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  background: var(--tile-bg);
+  border: 3px solid var(--tile-border);
+  border-radius: 20px;
+  color: var(--text);
+  text-decoration: none;
+  min-width: 0;
+  transition: transform 0.1s ease;
+}
+
+.tile:active { transform: scale(0.96); }
+
+.tile:focus-visible {
+  outline: 5px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.tile img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.tile-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+  overflow-wrap: break-word; /* break inside a word only if it cannot fit on its own line */
+}
+
+/* Picture failed to load: show the name alone, a little larger. */
+.tile--no-image { justify-content: center; min-height: 140px; }
+.tile--no-image .tile-name { font-size: 1.5rem; }
+
+noscript p {
+  margin: var(--gutter);
+  font-size: 1.4rem;
+  text-align: center;
+}

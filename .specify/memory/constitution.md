@@ -23,7 +23,7 @@ written expression and vocabulary growth.
 - Language content MUST be stored in separate data files, not embedded in game logic, so it can
   be added and edited without changing code.
 - All content MUST be reviewed and approved by the owner before publishing.
-- Content SHOULD be grouped by topic and by difficulty level.
+- Content SHOULD be grouped by the game's theme.
 
 Rationale: children learn from what they see; one wrong word teaches a mistake. Separate data
 lets the vocabulary grow independently of the games.
@@ -67,10 +67,11 @@ able to hold the whole system in their head.
   desktop (mouse/keyboard); buttons and text MUST be large enough for a child.
 - **Readability**: clear, large font with good Cyrillic support; good contrast.
 - **Performance**: a game page SHOULD load in under 2 seconds on an ordinary mobile connection.
-- **Target age**: children in grades 1–4 (roughly ages 6–10). Every content item MUST be
-  tagged with the grade level(s) it suits, and the child or parent MUST be able to choose the
-  grade. Content for grade 1 MUST use short, common words and short sentences, since children
-  are still learning to read; pictures SHOULD support the text where they help meaning.
+- **Target age**: children in grades 1–4 (roughly ages 6–10). There is no grade selection:
+  each game's theme implies the level it suits, and the parent or child chooses a game by its
+  theme. A game's spec MUST state which grades its theme is meant for. Games meant for grade 1
+  MUST use short, common words and short sentences, since children are still learning to read;
+  pictures SHOULD support the text where they help meaning.
 - **Language**: the user interface and all game content MUST be in Bulgarian; all project
   documentation (constitution, specs, plans, tasks, README, code comments) MUST be in English.
 
@@ -110,4 +111,4 @@ able to hold the whole system in their head.
 - Every `plan.md` MUST pass the Constitution Check against the principles above; any deviation
   MUST be recorded and justified in the plan's Complexity Tracking section.
 
-**Version**: 1.0.0 | **Ratified**: 2026-11-08 | **Last Amended**: 2026-11-08
+**Version**: 1.1.0 | **Ratified**: 2026-11-08 | **Last Amended**: 2026-11-08

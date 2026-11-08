@@ -1,6 +1,9 @@
 # Personal Claude Code settings (may contain local permissions or tokens)
 .claude/settings.local.json
 
+# Machine-specific local preview server config (desktop app)
+.claude/launch.json
+
 # OS clutter
 Thumbs.db
 .DS_Store

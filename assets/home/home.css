@@ -1,0 +1,27 @@
+/* Shared home control: fixed top-left, same in every game (contract: home-control.md). */
+.home-control {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: #1d4ed8;
+  color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+.home-control img {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
+.home-control:focus-visible {
+  outline: 5px solid #b91c1c;
+  outline-offset: 3px;
+}
