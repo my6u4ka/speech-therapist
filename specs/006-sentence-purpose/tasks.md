@@ -210,12 +210,31 @@ content core of the new game.
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T018 Run `node --test` and confirm that every suite passes, both the new ones and the
-  unchanged existing ones.
-- [ ] T019 Run quickstart.md scenarios 1–13 on the local preview server at 360 px and on desktop.
+- [x] T018 Run `node --test` and confirm that every suite passes, both the new ones and the
+  unchanged existing ones. (2026-11-21: 77/77 pass. `git diff develop` shows no change to the
+  existing tests or `game.js` files.)
+- [x] T019 Run quickstart.md scenarios 1–13 on the local preview server at 360 px and on desktop.
   This includes scenario 13: one series each of Синоними, Антоними, and Какво означава? after the
   migration. Record the results under this task and fix any failures.
-- [ ] T020 [P] Update `README.md`:
+  - 2026-11-21, Chromium, local preview server at 360 px. Scenarios 1–9, 11, 12, and 13 pass:
+    - the 4 labels appear in order, in one column below 480 px, each at least 56 px tall, and the
+      sentence is 25.6 px;
+    - a wrong answer is ruled out with "не е това", disabled, and plays `try-again`; a double tap
+      and a tap while busy are ignored;
+    - a right answer shows "Браво! Подканва някого да направи нещо.", plays `correct`, and locks
+      the others;
+    - the series has exactly 2 of each type, and the last question plays `round`;
+    - the summary shows "От първия опит: 7 от 8." with ⭐⭐⭐ and plays `series`;
+    - "Играй пак" starts a new series;
+    - nothing is stored.
+  - The migration spot check passes. `PlayKit` is loaded, and the summaries are correct:
+    - Синоними: "Браво! Намери 10 от 10 думи." ⭐⭐⭐;
+    - Антоними: "От първия опит: 25 от 25." ⭐⭐⭐;
+    - Какво означава?: "От първия опит: 8 от 8." ⭐⭐⭐;
+    - there are no console errors.
+  - Scenario 10, the portal tile, was checked through `games.js`. The tile list was checked on
+    the live portal only after merging.
+- [x] T020 [P] Update `README.md`:
   - add "Какво е изречението?" to the Games table (`games/sentences/`, grades 3–4, what the child
     does, and the content file `games/sentences/words.js`);
   - add a short note that the shared game helpers live in `assets/shared/play.js`, with a link to
