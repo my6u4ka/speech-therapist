@@ -84,3 +84,38 @@ test("wrappers delegate to the shared kit", () => {
   assert.equal(L.summaryLine2(7, 8), "От първия опит: 7 от 8.");
   assert.equal(L.shuffle([1, 2, 3]).length, 3);
 });
+
+function seeded(seed) {
+  let s = seed;
+  return () => {
+    s = (s * 16807) % 2147483647;
+    return (s - 1) / 2147483646;
+  };
+}
+
+test("buildSeries gives 8 entries, 2 per type, with no repeats", () => {
+  const series = L.buildSeries(BANK, 2, seeded(11));
+  assert.equal(series.length, 8);
+  TYPES.forEach((t) => {
+    assert.equal(series.filter((e) => e.type === t.id).length, 2, t.id);
+  });
+  assert.equal(new Set(series.map((e) => e.text)).size, 8);
+});
+
+test("buildSeries on a small bank returns fewer and never throws", () => {
+  const small = [{ text: "Днес е слънчево.", type: "statement" }];
+  assert.deepEqual(L.buildSeries(small, 2, seeded(1)), small);
+  assert.deepEqual(L.buildSeries([], 2, seeded(1)), []);
+});
+
+test("buildSeries with a different rng gives a different order", () => {
+  const a = L.buildSeries(BANK, 2, seeded(3)).map((e) => e.text);
+  const b = L.buildSeries(BANK, 2, seeded(99)).map((e) => e.text);
+  assert.notDeepEqual(a, b);
+});
+
+test("buildSeries works without an rng and does not mutate the bank", () => {
+  const copy = BANK.slice();
+  assert.equal(L.buildSeries(BANK).length, 8);
+  assert.deepEqual(BANK, copy);
+});

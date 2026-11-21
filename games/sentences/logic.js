@@ -73,6 +73,26 @@
     return problems;
   }
 
+  // Builds a series: groups by type, shuffles each group, takes up to perType from each, then
+  // shuffles the result (research R4). Never repeats an entry; shorter if a type is short.
+  function buildSeries(entries, perType, rng) {
+    if (perType === undefined) perType = 2;
+    var groups = {};
+    var order = [];
+    entries.forEach(function (e) {
+      if (!Object.prototype.hasOwnProperty.call(groups, e.type)) {
+        groups[e.type] = [];
+        order.push(e.type);
+      }
+      groups[e.type].push(e);
+    });
+    var picked = [];
+    order.forEach(function (id) {
+      picked = picked.concat(shuffle(groups[id], rng).slice(0, perType));
+    });
+    return shuffle(picked, rng);
+  }
+
   // Fisher-Yates shuffle; returns a new array (shared kit).
   function shuffle(list, rng) {
     return Kit.shuffle(list, rng);
@@ -92,6 +112,7 @@
     wordCount: wordCount,
     validateEntry: validateEntry,
     validateBank: validateBank,
+    buildSeries: buildSeries,
     shuffle: shuffle,
     starsFor: starsFor,
     summaryLine2: summaryLine2

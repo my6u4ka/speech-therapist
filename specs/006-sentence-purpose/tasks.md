@@ -178,14 +178,14 @@ content core of the new game.
 
 **Independent Test**: quickstart scenarios 5–9.
 
-- [ ] T013 [US2] Add tests to `tests/sentences.test.js` for `buildSeries(entries, 2, rng)`:
+- [x] T013 [US2] Add tests to `tests/sentences.test.js` for `buildSeries(entries, 2, rng)`:
   - with the real bank and a fixed seed, it returns 8 entries, exactly 2 per type, with no
     repeats;
   - a small bank, such as 1 entry of one type, gives fewer and never throws;
   - a different rng gives a different order.
-- [ ] T014 [US2] Implement `buildSeries` in `games/sentences/logic.js` per research R4, so that the
+- [x] T014 [US2] Implement `buildSeries` in `games/sentences/logic.js` per research R4, so that the
   T013 tests pass.
-- [ ] T015 [US2] In `games/sentences/game.js`, replace the random question with a series:
+- [x] T015 [US2] In `games/sentences/game.js`, replace the random question with a series:
   - call `buildSeries(validEntries, 2)` and show the progress "n / 8";
   - play `sfx("round")` instead of `sfx("correct")` on the last question;
   - make "Напред" go to the next question, and after the last one show `#summary`, play
