@@ -25,6 +25,7 @@ requests, and stores no data about the child.
 | Антоними | `games/antonyms/` | grades 2–4 | Connects words from two columns into pairs with opposite meanings; 5 pairs per round, 5 rounds per series. Word bank: `games/antonyms/words.js`. |
 | Какво означава? | `games/meanings/` | grades 3–4 | Reads a word in a short sentence and chooses its meaning from 3 explanations; 8 words per series. Word bank: `games/meanings/words.js`. |
 | Какво е изречението? | `games/sentences/` | grades 3–4 | Reads a sentence and names its type by purpose (съобщително, въпросително, подбудително, възклицателно); 8 sentences per series, 2 of each type. Content: `games/sentences/words.js`. |
+| Подреди изречението | `games/builder/` | grades 3–4 | Drags (or taps) shuffled word cards into the right order to build a sentence, then checks; 6 sentences per series, shorter to longer. Content: `games/builder/words.js`. |
 
 Shared game helpers (shuffle, stars, the first-try line) live in `assets/shared/play.js`; see
 [specs/006-sentence-purpose/contracts/play-helpers.md](specs/006-sentence-purpose/contracts/play-helpers.md).
