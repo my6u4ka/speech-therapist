@@ -199,11 +199,37 @@ checking.
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T017 Run `node --test` and confirm that every suite passes.
-- [ ] T018 Run quickstart.md scenarios 1–16 on the local preview server at 360 px (with touch
+- [x] T017 Run `node --test` and confirm that every suite passes. (2026-11-21: 89/89 pass.)
+- [x] T018 Run quickstart.md scenarios 1–16 on the local preview server at 360 px (with touch
   emulation where possible) and on desktop. Include dragging with synthetic pointer events, and
   record the results under this task. Fix any failure.
-- [ ] T019 [P] Update `README.md`: add "Подреди изречението" to the Games table, with
+  - **Environment**: 2026-11-21, Chromium, local preview server at 360 px. Dragging was tested
+    with synthetic touch-type `PointerEvent`s.
+  - **Passing (scenarios 1–9, 11–13, 16):**
+    - cards have no punctuation and a lowercase first word; `touch-action: none`; no sideways
+      scrolling; "Провери" disabled while a slot is empty;
+    - drag pool → empty slot (with `tap` sound), pool → taken slot (the old card returns to the
+      pool), slot → empty slot, slot → pool, and a drop outside every target (the card
+      returns); no `.dragging` card is left behind;
+    - a short move counts as a tap, and tapping a card in the pool or in a slot moves it;
+    - a check with two words swapped locks the right cards and tags the wrong ones "опитай
+      пак", which stay movable, then "Почти!…" and `try-again`;
+    - after fixing, the check shows "Браво!", the full sentence "Не искам да закъснея."
+      appears, `correct` plays, and the button becomes "Напред";
+    - a series of 6 with word counts 4, 5, 5, 5, 6, 6; the last check plays `round`; the
+      summary shows "От първия опит: 5 от 6." with ⭐⭐⭐ and plays `series`;
+    - "Играй пак" starts a new series; nothing is stored.
+  - **Not checked:** scenario 10 (a repeated word) is covered by `checkBoard` unit tests only.
+    The desktop width, scenario 14 (the portal tile), and real touch on a device are for the
+    owner.
+  - **Fixed during review (content):** five sentences had a second equally natural word order
+    and were removed, which leaves 30:
+    - "Кога ще дойде баба?";
+    - "Защо плаче малкото ми братче?";
+    - "Какъв хубав ден е днес!";
+    - "Хайде да играем в двора!";
+    - "Трябва да си измия зъбите.".
+- [x] T019 [P] Update `README.md`: add "Подреди изречението" to the Games table, with
   `games/builder/`, grades 3–4, what the child does (drag or tap), and the content file
   `games/builder/words.js`.
 - [ ] T020 **Owner**: review every sentence in `games/builder/words.js` (quickstart scenario 17,
