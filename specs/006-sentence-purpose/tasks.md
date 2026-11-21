@@ -67,7 +67,7 @@ grouped by user story.
 **Purpose**: add the shared helpers, migrate the existing games to them, and build the rules and
 content core of the new game.
 
-- [ ] T003 [P] Create `assets/shared/play.js` per contracts/play-helpers.md.
+- [x] T003 [P] Create `assets/shared/play.js` per contracts/play-helpers.md.
   - It is a classic script with an IIFE that defines `shuffle(list, rng = Math.random)`
     (Fisher–Yates, returns a new array), `starsFor(found, total)`, and `firstTryLine(x, y)`.
   - `starsFor` MUST return exactly what the games' current copies return: 3 at 0.8 or more, 2 at
@@ -77,7 +77,7 @@ content core of the new game.
 
   First read the three existing copies in `games/{synonyms,antonyms,meanings}/logic.js`. If they
   differ from each other in any way, STOP and report.
-- [ ] T004 Create `tests/play.test.js` (`node:test`, `node:assert/strict`). It requires
+- [x] T004 Create `tests/play.test.js` (`node:test`, `node:assert/strict`). It requires
   `assets/shared/play.js` and tests:
   - `shuffle` keeps every item, does not mutate its input, and is deterministic with a fixed rng;
   - `starsFor` at the boundaries (0/10 → 1, 5/10 → 2, 8/10 → 3, 10/10 → 3, 0/0 → 1), and never
@@ -85,7 +85,7 @@ content core of the new game.
   - `firstTryLine(7, 8)` returns "От първия опит: 7 от 8.".
 
   Depends on T003.
-- [ ] T005 Migrate `games/synonyms/` to the shared helpers.
+- [x] T005 Migrate `games/synonyms/` to the shared helpers.
   - In `index.html`, add `<script defer src="../../assets/shared/play.js"></script>` before
     `words.js`.
   - In `logic.js`, resolve
@@ -95,12 +95,12 @@ content core of the new game.
     `tests/synonyms.test.js`.
 
   Depends on T003.
-- [ ] T006 [P] Migrate `games/antonyms/` the same way: `shuffle`, `starsFor`, and `summaryLine2`
+- [x] T006 [P] Migrate `games/antonyms/` the same way: `shuffle`, `starsFor`, and `summaryLine2`
   (which becomes `Kit.firstTryLine`) in `logic.js`, plus the script tag in `index.html`. Do not
   change `game.js` or `tests/antonyms.test.js`.
 
   Depends on T003.
-- [ ] T007 [P] Migrate `games/meanings/` the same way: `shuffle`, `starsFor`, and `summaryLine2`.
+- [x] T007 [P] Migrate `games/meanings/` the same way: `shuffle`, `starsFor`, and `summaryLine2`.
   Do not change `game.js` or `tests/meanings.test.js`.
 
   Depends on T003.

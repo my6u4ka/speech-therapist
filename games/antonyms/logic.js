@@ -3,6 +3,8 @@
 (function () {
   "use strict";
 
+  var Kit = globalThis.PlayKit || (typeof require === "function" ? require("../../assets/shared/play.js") : null);
+
   var MAX_WORD = 16;
   var MIN_BANK = 40;
 
@@ -73,17 +75,9 @@
       qa.some(function (w) { return pw.indexOf(w) !== -1; });
   }
 
-  // Fisher-Yates shuffle; returns a new array.
+  // Fisher-Yates shuffle; returns a new array (shared kit).
   function shuffle(list, rng) {
-    rng = rng || Math.random;
-    var a = list.slice();
-    for (var i = a.length - 1; i > 0; i--) {
-      var j = Math.floor(rng() * (i + 1));
-      var t = a[i];
-      a[i] = a[j];
-      a[j] = t;
-    }
-    return a;
+    return Kit.shuffle(list, rng);
   }
 
   // Builds the two columns of a round (research R5). A coin flip per pair decides which word
@@ -152,15 +146,11 @@
 
   // 1-3 stars by share found; never 0 (positive feedback only).
   function starsFor(found, total) {
-    if (!(total > 0)) return 1;
-    var share = found / total;
-    if (share >= 0.8) return 3;
-    if (share >= 0.5) return 2;
-    return 1;
+    return Kit.starsFor(found, total);
   }
 
   function summaryLine2(firstTry, total) {
-    return "От първия опит: " + firstTry + " от " + total + ".";
+    return Kit.firstTryLine(firstTry, total);
   }
 
   var api = {
