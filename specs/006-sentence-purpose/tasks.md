@@ -104,7 +104,7 @@ content core of the new game.
   Do not change `game.js` or `tests/meanings.test.js`.
 
   Depends on T003.
-- [ ] T008 Create `games/sentences/logic.js`. It is pure, with no DOM access, and exposes
+- [x] T008 Create `games/sentences/logic.js`. It is pure, with no DOM access, and exposes
   `globalThis.SentenceLogic` plus `module.exports` under Node. It resolves `Kit` as in T005 and
   implements:
   - `normalize(s)`;
@@ -117,7 +117,7 @@ content core of the new game.
   - `validateBank(entries, types)`, which returns a list of problems: invalid entries, duplicate
     texts (compared after trimming and lowercasing), and any type with fewer than 10 entries;
   - the wrappers `shuffle`, `starsFor`, and `summaryLine2` (→ `Kit.firstTryLine`).
-- [ ] T009 [P] Create `games/sentences/words.js` with:
+- [x] T009 [P] Create `games/sentences/words.js` with:
   - `globalThis.SENTENCE_TYPES`, exactly as the table in data-model.md (ids, labels, reasons,
     marks, in that order);
   - `globalThis.SENTENCE_ENTRIES`, at least 40 entries, at least 10 per type, for grades 3–4 (R8).
@@ -131,7 +131,7 @@ content core of the new game.
 
   Leave out every sentence whose type is arguable, such as polite requests phrased as questions,
   or orders that sound like exclamations. When in doubt, leave it out.
-- [ ] T010 Create `tests/sentences.test.js` (`node:test`, `node:assert/strict`). It requires
+- [x] T010 Create `tests/sentences.test.js` (`node:test`, `node:assert/strict`). It requires
   `games/sentences/logic.js` and `games/sentences/words.js` and tests:
   - `wordCount`;
   - `validateEntry`: one valid entry per type, plus one broken entry for each rule, including a
