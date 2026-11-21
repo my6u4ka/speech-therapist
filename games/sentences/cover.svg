@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" fill="#fff1c9"/>
+  <g fill="#ffffff" stroke="#2b4a8b" stroke-width="10" stroke-linejoin="round">
+    <!-- four speech bubbles -->
+    <path d="M60 60 H220 a24 24 0 0 1 24 24 V170 a24 24 0 0 1 -24 24 H120 L84 232 V194 H60 a24 24 0 0 1 -24 -24 V84 a24 24 0 0 1 24 -24 Z"/>
+    <path d="M292 60 H452 a24 24 0 0 1 24 24 V170 a24 24 0 0 1 -24 24 H428 V232 L392 194 H292 a24 24 0 0 1 -24 -24 V84 a24 24 0 0 1 24 -24 Z"/>
+    <path d="M60 268 H220 a24 24 0 0 1 24 24 V378 a24 24 0 0 1 -24 24 H120 L84 440 V402 H60 a24 24 0 0 1 -24 -24 V292 a24 24 0 0 1 24 -24 Z"/>
+    <path d="M292 268 H452 a24 24 0 0 1 24 24 V378 a24 24 0 0 1 -24 24 H428 V440 L392 402 H292 a24 24 0 0 1 -24 -24 V292 a24 24 0 0 1 24 -24 Z"/>
+  </g>
+  <!-- the marks: statement, question, request, exclamation -->
+  <g fill="#1d4ed8" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="110" text-anchor="middle">
+    <circle cx="140" cy="150" r="14"/>
+    <text x="380" y="170">?</text>
+    <text x="140" y="378">!</text>
+    <text x="380" y="378" fill="#b91c1c">!!</text>
+  </g>
+  <!-- a pointing hand in the lower right corner -->
+  <g fill="#ffd9a8" stroke="#2b4a8b" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="404" y="410" width="30" height="76" rx="15"/>
+    <rect x="428" y="446" width="64" height="48" rx="22"/>
+  </g>
+</svg>

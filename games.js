@@ -13,5 +13,7 @@
 window.GAMES = [
   { id: "synonyms", name: "Синоними", image: "games/synonyms/cover.svg" },
   { id: "antonyms", name: "Антоними", image: "games/antonyms/cover.svg" },
-  { id: "meanings", name: "Какво означава?", image: "games/meanings/cover.svg" }
+  { id: "meanings", name: "Какво означава?", image: "games/meanings/cover.svg" },
+  { id: "sentences", name: "Какво е изречението?", image: "games/sentences/cover.svg" },
+  { id: "builder", name: "Подреди изречението", image: "games/builder/cover.svg" }
 ];
