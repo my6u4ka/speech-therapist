@@ -198,11 +198,11 @@ content core of the new game.
 
 ## Phase 5: User Story 3 - The game is on the portal (Priority: P3)
 
-- [ ] T016 [P] [US3] Create `games/sentences/cover.svg`: square (viewBox 0 0 512 512), "at most
+- [x] T016 [P] [US3] Create `games/sentences/cover.svg`: square (viewBox 0 0 512 512), "at most
   100 KB", friendly, with no letters or words. It should suggest sentence types, for example 4
   speech bubbles holding the marks `.`, `?`, `!` and a pointing hand. Punctuation marks are
   allowed.
-- [ ] T017 [US3] Add
+- [x] T017 [US3] Add
   `{ id: "sentences", name: "Какво е изречението?", image: "games/sentences/cover.svg" }` to
   `window.GAMES` in `games.js`, after "meanings".
 
