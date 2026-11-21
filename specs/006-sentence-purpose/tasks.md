@@ -152,7 +152,7 @@ content core of the new game.
 
 **Independent Test**: quickstart scenarios 1–4, 11, and 12.
 
-- [ ] T011 [US1] Create `games/sentences/game.js` with:
+- [x] T011 [US1] Create `games/sentences/game.js` with:
   - valid entries only; invalid ones are skipped with `console.warn`;
   - the guarded `sfx()` helper;
   - one random question, which renders:
@@ -165,7 +165,7 @@ content core of the new game.
     - **wrong**: `ruled-out`, a "не е това" tag span, `disabled`, `sfx("try-again")`,
       "Опитай пак!", `firstTry = false`, and busy for 400 ms;
   - taps ignored while busy or after the question is answered.
-- [ ] T012 [P] [US1] Check `games/sentences/game.css` against the button states in
+- [x] T012 [P] [US1] Check `games/sentences/game.css` against the button states in
   question-flow.md, and add anything missing.
 
 **Checkpoint**: one question plays end to end.
