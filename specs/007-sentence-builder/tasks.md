@@ -188,10 +188,10 @@ checking.
 
 ## Phase 5: User Story 3 - The game is on the portal (Priority: P3)
 
-- [ ] T015 [P] [US3] Create `games/builder/cover.svg`: square (viewBox 0 0 512 512), "at most 100
+- [x] T015 [P] [US3] Create `games/builder/cover.svg`: square (viewBox 0 0 512 512), "at most 100
   KB", friendly, with no readable words. It should suggest arranging words, for example colorful
   word cards with blank lines and an arrow moving one card into a row.
-- [ ] T016 [US3] Add
+- [x] T016 [US3] Add
   `{ id: "builder", name: "Подреди изречението", image: "games/builder/cover.svg" }` to
   `window.GAMES` in `games.js`, after "sentences".
 
