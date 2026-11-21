@@ -232,8 +232,8 @@ content core of the new game.
     - Антоними: "От първия опит: 25 от 25." ⭐⭐⭐;
     - Какво означава?: "От първия опит: 8 от 8." ⭐⭐⭐;
     - there are no console errors.
-  - Scenario 10, the portal tile, was checked through `games.js`. The tile list was checked on
-    the live portal only after merging.
+  - Scenario 10: the local portal shows 4 tiles. "Какво е изречението?" is last and links to
+    `games/sentences/`.
 - [x] T020 [P] Update `README.md`:
   - add "Какво е изречението?" to the Games table (`games/sentences/`, grades 3–4, what the child
     does, and the content file `games/sentences/words.js`);
