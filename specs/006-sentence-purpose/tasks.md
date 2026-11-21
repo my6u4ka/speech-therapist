@@ -33,7 +33,7 @@ grouped by user story.
 
 ## Phase 1: Setup
 
-- [ ] T001 Create `games/sentences/index.html` from `games/meanings/index.html`.
+- [x] T001 Create `games/sentences/index.html` from `games/meanings/index.html`.
   - Keep the home control, the sound control, the icon link, `sound.css`, and the `sound.js`
     script tag exactly as they are.
   - Set `<title>Какво е изречението?</title>`.
@@ -49,7 +49,7 @@ grouped by user story.
     `../../assets/sound/sound.js`, `../../assets/shared/play.js`, `words.js`, `logic.js`,
     `game.js`.
   - Add a Bulgarian `<noscript>`.
-- [ ] T002 [P] Create `games/sentences/game.css` as its own copy of the shared look in
+- [x] T002 [P] Create `games/sentences/game.css` as its own copy of the shared look in
   `games/meanings/game.css`: tokens, body padding, font, progress, action, summary, and
   reduced-motion. Add:
   - `#sentence`: a soft card with a font size of at least `1.6rem`, centered, with wrapping text;
