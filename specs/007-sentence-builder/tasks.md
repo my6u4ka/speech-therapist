@@ -31,7 +31,7 @@ description: "Task list for the Sentence Builder Game feature"
 
 ## Phase 1: Setup
 
-- [ ] T001 Create `games/builder/index.html` from `games/sentences/index.html`:
+- [x] T001 Create `games/builder/index.html` from `games/sentences/index.html`:
   - keep the home control, the sound control, the icon link, `sound.css`, and the script tags for
     `sound.js` and `play.js` exactly as they are;
   - set `<title>Подреди изречението</title>`;
@@ -42,7 +42,7 @@ description: "Task list for the Sentence Builder Game feature"
   - load the scripts as classic `<script defer>`, in this order: `sound.js`, `play.js`,
     `words.js`, `logic.js`, `game.js`;
   - add a Bulgarian `<noscript>`.
-- [ ] T002 [P] Create `games/builder/game.css`, a copy of the shared look in
+- [x] T002 [P] Create `games/builder/game.css`, a copy of the shared look in
   `games/sentences/game.css`, and add:
   - `#slots` and `#pool`: flex-wrap rows with a 10 px gap, centered. `#pool` has a soft
     background and a minimum height of 72 px, so it stays a drop target when it is empty.
