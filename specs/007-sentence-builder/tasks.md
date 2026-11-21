@@ -232,7 +232,7 @@ checking.
 - [x] T019 [P] Update `README.md`: add "Подреди изречението" to the Games table, with
   `games/builder/`, grades 3–4, what the child does (drag or tap), and the content file
   `games/builder/words.js`.
-- [ ] T020 **Owner**: review every sentence in `games/builder/words.js` (quickstart scenario 17,
+- [x] T020 **Owner**: review every sentence in `games/builder/words.js` (quickstart scenario 17,
   FR-006 and FR-011), with special attention to "only one natural word order". Then remove the
   "DRAFT" note. This is required before the release.
 

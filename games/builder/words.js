@@ -1,7 +1,7 @@
 // words.js: sentences to arrange, for grades 3-4.
 // Format and rules: specs/007-sentence-builder/contracts/sentence-entry.md
-// DRAFT: awaiting owner approval (T020). Do not release before the owner has reviewed every
-// sentence, with special attention to "only one natural word order" (FR-006).
+// Approved by the owner on 2026-11-21 (T020). New sentences need owner approval before release,
+// with special attention to "only one natural word order" (FR-006).
 // Write each sentence exactly as it should look: capital letter, end mark, no commas.
 // Add firstIsName: true when the first word is a name (it keeps its capital on the card).
 globalThis.BUILDER_SENTENCES = [
