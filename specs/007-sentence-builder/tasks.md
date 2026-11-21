@@ -61,7 +61,7 @@ description: "Task list for the Sentence Builder Game feature"
 
 ## Phase 2: Foundational (Blocking Prerequisites)
 
-- [ ] T003 [P] Create `games/builder/logic.js`. It is pure (no DOM) and exposes
+- [x] T003 [P] Create `games/builder/logic.js`. It is pure (no DOM) and exposes
   `globalThis.BuilderLogic`, plus `module.exports` under Node. It resolves `Kit` like
   `games/sentences/logic.js` and implements:
   - `tokenize(text)`: splits on single spaces and strips `.?!`, returning the words.
@@ -76,7 +76,7 @@ description: "Task list for the Sentence Builder Game feature"
   - `validateBank(entries)`: returns a list of problems, covering invalid entries, duplicate texts
     (after trimming and lowercasing), and "at least 30 entries".
   - The wrappers `shuffle`, `starsFor`, and `summaryLine2`, which delegate to `Kit`.
-- [ ] T004 [P] Create `games/builder/words.js` with `globalThis.BUILDER_SENTENCES = [...]`:
+- [x] T004 [P] Create `games/builder/words.js` with `globalThis.BUILDER_SENTENCES = [...]`:
   - **at least 30** sentences for grades 3–4 (R10), with 4–8 words and no commas or other inner
     punctuation;
   - a mix of statements, questions, and exclamations;
@@ -89,7 +89,7 @@ description: "Task list for the Sentence Builder Game feature"
   grammar fixes, such as preposition + noun, adjective + noun, or a question word first. Avoid
   movable time or place phrases, and subject–verb–object sentences whose reversed order is
   equally natural. When in doubt, leave the sentence out.
-- [ ] T005 Create `tests/builder.test.js` (`node:test`, `node:assert/strict`). It requires
+- [x] T005 Create `tests/builder.test.js` (`node:test`, `node:assert/strict`). It requires
   `games/builder/logic.js` and `games/builder/words.js`, and tests:
   - `tokenize`, including the end marks `?` and `!`;
   - `displayWord`, with and without `firstIsName`, and for a mid-sentence name that keeps its
