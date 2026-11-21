@@ -1,6 +1,6 @@
 // words.js: sentence types and sentences for grades 3-4.
 // Format and rules: specs/006-sentence-purpose/contracts/sentence-entry.md
-// DRAFT: awaiting owner approval (T021). Do not publish before the owner has reviewed it.
+// Approved by the owner on 2026-11-21 (T021). New sentences need owner approval before release.
 // Only sentences with one clear type are listed; arguable ones are left out on purpose.
 globalThis.SENTENCE_TYPES = [
   { id: "statement",   label: "съобщително",   reason: "Съобщава нещо.",                   marks: ["."] },

@@ -239,7 +239,7 @@ content core of the new game.
     does, and the content file `games/sentences/words.js`);
   - add a short note that the shared game helpers live in `assets/shared/play.js`, with a link to
     `specs/006-sentence-purpose/contracts/play-helpers.md`.
-- [ ] T021 **Owner**: review and correct every sentence, label, and reason in
+- [x] T021 **Owner**: review and correct every sentence, label, and reason in
   `games/sentences/words.js` (quickstart scenario 14, FR-010), then remove the "DRAFT" note. This
   is required before release.
 
