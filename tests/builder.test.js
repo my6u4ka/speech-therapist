@@ -102,3 +102,19 @@ test("checkBoard accepts a repeated word in either place", () => {
   const swapped = L.checkBoard(["аз", "не", "аз", "не"], ["аз", "не", "аз", "не"]);
   assert.equal(swapped.allRight, true);
 });
+
+test("pickSeries returns 6 distinct entries sorted by word count", () => {
+  for (let seed = 1; seed <= 10; seed++) {
+    const series = L.pickSeries(BANK, 6, seeded(seed));
+    assert.equal(series.length, 6);
+    assert.equal(new Set(series.map((e) => e.text)).size, 6);
+    const counts = series.map((e) => L.tokenize(e.text).length);
+    assert.deepEqual(counts, [...counts].sort((a, b) => a - b));
+  }
+});
+
+test("pickSeries with a small bank gives fewer entries and never throws", () => {
+  const small = BANK.slice(0, 3);
+  assert.equal(L.pickSeries(small, 6, seeded(7)).length, 3);
+  assert.deepEqual(L.pickSeries([], 6), []);
+});

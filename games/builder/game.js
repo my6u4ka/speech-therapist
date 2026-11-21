@@ -10,8 +10,10 @@
     next: "Напред",
     right: "Браво!",
     wrong: "Почти! Премести думите с „опитай пак“.",
-    tag: "опитай пак"
+    tag: "опитай пак",
+    summary1: "Браво! Подреди всички изречения!"
   };
+  var SERIES_LENGTH = 6;
   var DRAG_THRESHOLD = 8; // px of movement before a press becomes a drag (research R1)
 
   var els = {
@@ -21,7 +23,12 @@
     pool: document.getElementById("pool"),
     full: document.getElementById("full"),
     feedback: document.getElementById("feedback"),
-    action: document.getElementById("action")
+    action: document.getElementById("action"),
+    summary: document.getElementById("summary"),
+    line1: document.getElementById("summary-line1"),
+    line2: document.getElementById("summary-line2"),
+    stars: document.getElementById("summary-stars"),
+    again: document.getElementById("again")
   };
 
   // Valid entries only; invalid ones are skipped with a warning (data-model.md).
@@ -37,6 +44,8 @@
   // Board state lives in memory only (data-model.md).
   // cards: { id, word, label, locked, retry }; slots[i] is a card id or null; pool is a list of ids.
   var board = null;
+  // Series state lives in memory only: { entries, index, firstTry, total }.
+  var series = null;
 
   function cardById(id) {
     return board.cards[id];
@@ -338,7 +347,7 @@
       els.full.textContent = board.entry.text;
       els.full.hidden = false;
       els.feedback.textContent = TEXT.right;
-      sfx("correct");
+      sfx(series.index === series.entries.length - 1 ? "round" : "correct");
     } else {
       board.firstTry = false;
       els.feedback.textContent = TEXT.wrong;
@@ -348,12 +357,42 @@
     if (board.solved) els.action.focus();
   }
 
-  function nextRound() {
-    // One random sentence at a time; the series arrives in US2.
-    var pool = validEntries.filter(function (e) { return !board || e !== board.entry; });
-    var list = pool.length > 0 ? pool : validEntries;
-    startRound(list[Math.floor(Math.random() * list.length)]);
+  function showProgress() {
+    els.progress.textContent = (series.index + 1) + " / " + series.entries.length;
   }
+
+  function startSeries() {
+    series = { entries: L.pickSeries(validEntries, SERIES_LENGTH), index: 0, firstTry: 0, total: 0 };
+    if (series.entries.length === 0) return;
+    els.summary.hidden = true;
+    els.round.hidden = false;
+    showProgress();
+    startRound(series.entries[0]);
+  }
+
+  function showSummary() {
+    els.round.hidden = true;
+    els.summary.hidden = false;
+    sfx("series");
+    els.line1.textContent = TEXT.summary1;
+    els.line2.textContent = L.summaryLine2(series.firstTry, series.total);
+    els.stars.textContent = "⭐".repeat(L.starsFor(series.firstTry, series.total));
+    els.again.focus();
+  }
+
+  function nextRound() {
+    if (board.firstTry) series.firstTry++;
+    series.total++;
+    series.index++;
+    if (series.index >= series.entries.length) {
+      showSummary();
+      return;
+    }
+    showProgress();
+    startRound(series.entries[series.index]);
+  }
+
+  els.again.addEventListener("click", startSeries);
 
   els.action.addEventListener("click", function () {
     if (!board || els.action.disabled) return;
@@ -361,5 +400,5 @@
     else check();
   });
 
-  if (validEntries.length > 0) nextRound();
+  if (validEntries.length > 0) startSeries();
 })();

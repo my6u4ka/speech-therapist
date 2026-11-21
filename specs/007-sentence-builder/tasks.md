@@ -170,13 +170,13 @@ checking.
 
 **Independent Test**: quickstart scenarios 11–13.
 
-- [ ] T012 [US2] Add tests to `tests/builder.test.js` for `pickSeries(entries, 6, rng)`:
+- [x] T012 [US2] Add tests to `tests/builder.test.js` for `pickSeries(entries, 6, rng)`:
   - with the real bank and a fixed seed, it returns 6 entries with no repeats, sorted by word count
     (ascending);
   - a small bank gives fewer entries and never throws.
-- [ ] T013 [US2] Implement `pickSeries` in `games/builder/logic.js` per research R7, so that the
+- [x] T013 [US2] Implement `pickSeries` in `games/builder/logic.js` per research R7, so that the
   T012 tests pass.
-- [ ] T014 [US2] In `games/builder/game.js`, replace the random sentence with a series:
+- [x] T014 [US2] In `games/builder/game.js`, replace the random sentence with a series:
   - call `pickSeries(validEntries, 6)` and show the progress "n / 6";
   - on the last sentence, play `sfx("round")` instead of `"correct"`;
   - "Напред" goes to the next sentence. After the last one, show `#summary` with

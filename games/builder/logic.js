@@ -104,6 +104,15 @@
     return { right: right, allRight: right.every(Boolean) };
   }
 
+  // Picks up to n distinct entries at random, then sorts them from shortest to longest by word
+  // count (research R7). Entries with the same count keep their random order.
+  function pickSeries(entries, n, rng) {
+    var picked = shuffle(entries, rng).slice(0, n);
+    var keyed = picked.map(function (e, i) { return { e: e, i: i, n: tokenize(e.text).length }; });
+    keyed.sort(function (a, b) { return a.n - b.n || a.i - b.i; });
+    return keyed.map(function (k) { return k.e; });
+  }
+
   // 1-3 stars by share found; never 0 (positive feedback only).
   function starsFor(found, total) {
     return Kit.starsFor(found, total);
@@ -122,6 +131,7 @@
     shuffle: shuffle,
     scramble: scramble,
     checkBoard: checkBoard,
+    pickSeries: pickSeries,
     starsFor: starsFor,
     summaryLine2: summaryLine2
   };
