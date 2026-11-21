@@ -52,3 +52,53 @@ test("validateBank detects duplicates and a short bank", () => {
 test("the real bank has no problems", () => {
   assert.deepEqual(L.validateBank(BANK), []);
 });
+
+// Small seeded generator so the tests are repeatable.
+function seeded(seed) {
+  let s = seed >>> 0;
+  return () => {
+    s = (s * 1664525 + 1013904223) >>> 0;
+    return s / 4294967296;
+  };
+}
+
+test("scramble keeps the words and changes the order", () => {
+  const words = ["котката", "спи", "на", "топлия", "диван"];
+  for (let seed = 1; seed <= 25; seed++) {
+    const out = L.scramble(words, seeded(seed));
+    assert.deepEqual([...out].sort(), [...words].sort());
+    assert.notDeepEqual(out, words);
+  }
+  // The input is not changed.
+  assert.deepEqual(words, ["котката", "спи", "на", "топлия", "диван"]);
+});
+
+test("scramble works with repeated words and with identical words", () => {
+  const words = ["аз", "не", "аз", "не"];
+  for (let seed = 1; seed <= 25; seed++) {
+    const out = L.scramble(words, seeded(seed));
+    assert.deepEqual([...out].sort(), [...words].sort());
+    assert.notDeepEqual(out, words);
+  }
+  assert.deepEqual(L.scramble(["а", "а", "а", "а"]), ["а", "а", "а", "а"]);
+});
+
+test("checkBoard marks each place", () => {
+  const target = ["котката", "спи", "на", "топлия", "диван"];
+  const ok = L.checkBoard(target, target.slice());
+  assert.equal(ok.allRight, true);
+  assert.deepEqual(ok.right, [true, true, true, true, true]);
+
+  const some = L.checkBoard(target, ["спи", "котката", "на", "топлия", "диван"]);
+  assert.equal(some.allRight, false);
+  assert.deepEqual(some.right, [false, false, true, true, true]);
+});
+
+test("checkBoard accepts a repeated word in either place", () => {
+  const target = ["не", "искам", "не", "мога"];
+  // The two "не" cards are interchangeable.
+  const res = L.checkBoard(target, ["не", "искам", "не", "мога"]);
+  assert.equal(res.allRight, true);
+  const swapped = L.checkBoard(["аз", "не", "аз", "не"], ["аз", "не", "аз", "не"]);
+  assert.equal(swapped.allRight, true);
+});

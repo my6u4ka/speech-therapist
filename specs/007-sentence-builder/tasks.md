@@ -112,14 +112,14 @@ checking.
 
 **Independent Test**: quickstart scenarios 1–10, 15, and 16.
 
-- [ ] T006 [US1] Add tests to `tests/builder.test.js` for:
+- [x] T006 [US1] Add tests to `tests/builder.test.js` for:
   - `scramble(words, rng)`: returns the same multiset of words, and its order differs from the
     input whenever at least 2 distinct words exist. Test it with several seeds.
   - `checkBoard(target, slotWords)`: all right, some wrong, and a repeated word that is right in
     either place.
-- [ ] T007 [US1] Implement `scramble` and `checkBoard` in `games/builder/logic.js` per research R6,
+- [x] T007 [US1] Implement `scramble` and `checkBoard` in `games/builder/logic.js` per research R6,
   so that the T006 tests pass.
-- [ ] T008 [US1] Create `games/builder/game.js`, part 1: the board and moves.
+- [x] T008 [US1] Create `games/builder/game.js`, part 1: the board and moves.
   - Take valid entries only, with a `console.warn` for each invalid one, and add the guarded
     `sfx()`.
   - For a random entry, build the cards from `scramble(tokenize(text))`, labeled with
@@ -135,7 +135,7 @@ checking.
     `sfx("tap")`, and updates "Провери" (enabled only when every slot is filled).
   - Tap, click, Enter, or Space on a pool card places it in the first empty slot. On a slot card
     that is not locked, it returns the card to the pool.
-- [ ] T009 [US1] In `games/builder/game.js`, implement the drag module per research R1 and R3:
+- [x] T009 [US1] In `games/builder/game.js`, implement the drag module per research R1 and R3:
   - On `pointerdown` on a card that is not locked, record the start point and call
     `setPointerCapture`.
   - After more than 8 px of movement, start the drag:
@@ -149,7 +149,7 @@ checking.
     - clean up the styles;
     - suppress the click that follows a drag, so it is not treated as a tap.
   - `pointercancel` returns the card. Use no library and not the HTML5 drag-and-drop API.
-- [ ] T010 [US1] In `games/builder/game.js`, implement the check per contracts/board-flow.md
+- [x] T010 [US1] In `games/builder/game.js`, implement the check per contracts/board-flow.md
   "Check":
   - **All right:** lock every card, show `#full` with `entry.text` (`textContent`), show
     "Браво!", play `sfx("correct")`, and turn the button into "Напред". In this story, "Напред"
@@ -157,7 +157,7 @@ checking.
   - **Some wrong:** lock the right cards. Give the wrong ones `retry` with a
     `<span class="tag">опитай пак</span>`. Show "Почти! Премести думите с „опитай пак“.", play
     `sfx("try-again")`, and set `firstTry = false`.
-- [ ] T011 [P] [US1] Check `games/builder/game.css` against the card states in board-flow.md and add
+- [x] T011 [P] [US1] Check `games/builder/game.css` against the card states in board-flow.md and add
   anything missing. Make sure a dragged card stays visible above the other content on mobile.
 
 **Checkpoint**: one sentence can be solved by dragging, by tapping, and with the keyboard.

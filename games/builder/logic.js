@@ -77,6 +77,33 @@
     return Kit.shuffle(list, rng);
   }
 
+  function sameOrder(a, b) {
+    for (var i = 0; i < a.length; i++) if (a[i] !== b[i]) return false;
+    return true;
+  }
+
+  // Shuffled copy that differs from the target order whenever at least 2 distinct words exist
+  // (research R6). Reshuffles up to 20 times, then rotates to a different order.
+  function scramble(words, rng) {
+    for (var t = 0; t < 20; t++) {
+      var out = shuffle(words, rng);
+      if (!sameOrder(out, words)) return out;
+    }
+    var out2 = words.slice();
+    for (var r = 1; r < words.length; r++) {
+      out2 = words.slice(r).concat(words.slice(0, r));
+      if (!sameOrder(out2, words)) return out2;
+    }
+    return words.slice(); // all words identical: nothing to change
+  }
+
+  // Compares each slot's word with the target word at that place (plain strings, so a repeated
+  // word is right in either of its places).
+  function checkBoard(target, slotWords) {
+    var right = target.map(function (w, i) { return slotWords[i] === w; });
+    return { right: right, allRight: right.every(Boolean) };
+  }
+
   // 1-3 stars by share found; never 0 (positive feedback only).
   function starsFor(found, total) {
     return Kit.starsFor(found, total);
@@ -93,6 +120,8 @@
     validateEntry: validateEntry,
     validateBank: validateBank,
     shuffle: shuffle,
+    scramble: scramble,
+    checkBoard: checkBoard,
     starsFor: starsFor,
     summaryLine2: summaryLine2
   };
